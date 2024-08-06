@@ -23,7 +23,7 @@ function HomeBar() {
   }, []);
 
   return (
-    <div className="flex items-center justify-between p-4 bg-blue-600 text-white">
+    <div className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between p-4 bg-blue-600 text-white">
       {/* Logo */}
       <div className="flex items-center">
         <img src="/path/to/logo.png" alt="Logo" className="h-8 w-8 mr-2" />
