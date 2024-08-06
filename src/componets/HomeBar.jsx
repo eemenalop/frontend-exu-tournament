@@ -23,7 +23,7 @@ function HomeBar() {
   }, []);
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between p-4 bg-blue-600 text-white">
+    <div className=" top-0 left-0 right-0 z-50 flex items-center justify-between p-5 m bg-slate-500 bg-opacity-90 text-white">
       {/* Logo */}
       <div className="flex items-center">
         <img src="/path/to/logo.png" alt="Logo" className="h-8 w-8 mr-2" />
@@ -38,7 +38,7 @@ function HomeBar() {
       </button>
 
       {/* Mobile Menu */}
-      <nav className={`fixed inset-0 flex flex-col items-center justify-center bg-blue-600 text-white transition-transform duration-300  ${menuOpen ? 'translate-x-0 translate-y-0' : 'translate-x-full translate-y-[-100%]'} lg:hidden`}>
+      <nav className={`fixed inset-0 flex flex-col items-center justify-center bg-slate-500 text-white transition-transform duration-300  ${menuOpen ? 'translate-x-0 translate-y-0' : 'translate-x-full translate-y-[-100%]'} lg:hidden`}>
         {/* Close Button */}
         <button className="absolute top-4 right-4 text-white text-3xl" onClick={toggleMenu}>
           &times; {/* This is the "X" symbol for closing */}

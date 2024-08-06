@@ -5,8 +5,8 @@ import Logos from './componets/Logos';
 function App() {
   return (
     <div>
-      <Logos />
       <HomeBar />
+      <Logos />
       <Standing />
     </div>
   );

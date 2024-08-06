@@ -1,8 +1,8 @@
 import { useState } from "react";
-import logo1 from "../teams_logos/bostonlogo.png";
-import logo2 from "../teams_logos/cavslogo.png";
-import logo3 from "../teams_logos/gswlogo.png";
-import logo4 from "../teams_logos/lakerslogo.png";
+import logo1 from "../teams_logos/nba-atlanta-hawks-logo.png";
+import logo2 from "../teams_logos/nba-boston-celtics-logo.png";
+import logo3 from "../teams_logos/nba-dallas-mavericks-logo.png";
+import logo4 from "../teams_logos/nba-memphis-grizzlies-logo.png";
 
 function Logos() {
     const [selectedIndex, setSelectedIndex] = useState(null);
@@ -23,24 +23,25 @@ function Logos() {
       }
     };
   
-    return (
-      <div className="grid grid-cols-2 gap-6 p-6 max-w-4xl mx-auto">
+  return (
+    <>
+      <h2 className="text-white">Equipos</h2>
+      <div className="grid grid-cols-2 gap-2 p-2 w-full max-w-md mx-auto mt-24 mb-4">
         {teams.map((team, index) => (
           <div
             key={team.id}
-            className={`relative cursor-pointer transition-transform duration-300 ease-in-out ${
-              selectedIndex === index ? "transform scale-105 z-10" : ""
-            }`}
+            className={` ${selectedIndex === index ? "transform scale-105 z-10" : ""}`}
             onClick={() => handleClick(index)}
           >
             <img
               src={team.logo}
               alt={`Team ${team.id}`}
-              className="w-64 h-64 object-cover rounded-lg shadow-lg"
+              className="w-full h-full object-contain rounded-lg"
             />
           </div>
         ))}
       </div>
+      </>
     );
   }
 
