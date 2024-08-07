@@ -25,9 +25,9 @@ function HomeBar() {
   return (
     <div className=" top-0 left-0 right-0 z-50 flex items-center justify-between p-5 m bg-slate-500 bg-opacity-90 text-white">
       {/* Logo */}
-      <div className="flex items-center">
-        <img src="/path/to/logo.png" alt="Logo" className="h-8 w-8 mr-2" />
-        <span className="font-bold text-xl">Basketball Tournament</span>
+      <div className="flex items-center pointer">
+        <img src="src\teams_logos\exuitesa-logo.jpg" alt="Logo" className="h-10 w-10 mr-2" />
+        <h2>Exuitesa Basketball</h2>
       </div>
 
       {/* Button for Mobile Menu */}
