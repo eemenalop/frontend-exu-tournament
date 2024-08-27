@@ -38,7 +38,7 @@ function HomeBar() {
       </button>
 
       {/* Mobile Menu */}
-      <nav className={`fixed inset-0 flex flex-col items-center justify-center bg-slate-500 text-white transition-transform duration-300  ${menuOpen ? 'translate-x-0 translate-y-0' : 'translate-x-full translate-y-[-100%]'} lg:hidden`}>
+      <nav className={`fixed inset-0 flex flex-col items-center justify-center bg-slate-500 text-white transition-transform duration-300 z-50  ${menuOpen ? 'translate-x-0 translate-y-0' : 'translate-x-full translate-y-[-100%]'} lg:hidden`}>
         {/* Close Button */}
         <button className="absolute top-4 right-4 text-white text-3xl" onClick={toggleMenu}>
           &times; {/* This is the "X" symbol for closing */}
