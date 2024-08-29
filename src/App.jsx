@@ -1,16 +1,18 @@
-import HomeBar from './componets/HomeBar';
-import Standing from './componets/Standings';
-import Logos from './componets/Logos';
-import PlayerOfTheGame from './componets/PlayerOfTheGame';
+import Home from './componets/Home';
+import LogIn from './adminComponets/LogIn';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import AdminHome from './adminComponets/AdminHome';
+
 
 function App() {
   return (
-    <div>
-      <HomeBar />
-      <Logos />
-      <PlayerOfTheGame/>
-      <Standing />
-    </div>
+    <Router>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/admin-login' element={<LogIn />} />
+        <Route path='/admin-home' element={<AdminHome />} />
+      </Routes>
+    </Router>
   );
 }
 
