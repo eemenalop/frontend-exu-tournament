@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '../supabaseClient';
-import { teamLogos } from '../teamLogos.js';
+import { teamLogos } from '../teamLogos';
 
 function Standing() {
   const [standings, setStandings] = useState([]);
@@ -66,7 +66,6 @@ function Standing() {
 
   const getTeamLogo = (teamId) => {
     const team = teamLogos.find(t => t.id === teamId);
-    console.log(`Logo for team ${teamId}:`, team ? team.logo : 'Not found');
     return team ? team.logo : '';
   };
 
@@ -76,24 +75,26 @@ function Standing() {
         <table className="min-w-full bg-white border border-gray-200">
           <thead>
             <tr>
-              <th className="py-2 px-4 border-b">Equipo</th>
-              <th className="py-2 px-4 border-b">JJ</th>
-              <th className="py-2 px-4 border-b">JG</th>
-              <th className="py-2 px-4 border-b">JP</th>
-              <th className="py-2 px-4 border-b">+/-</th>
+              <th className="py-2 px-4 border-b text-center">Equipo</th>
+              <th className="py-2 px-4 border-b text-center">JJ</th>
+              <th className="py-2 px-4 border-b text-center">JG</th>
+              <th className="py-2 px-4 border-b text-center">JP</th>
+              <th className="py-2 px-4 border-b text-center">+/-</th>
             </tr>
           </thead>
           <tbody>
             {standings.map((item, index) => (
               <tr key={index}>
-                <td className="py-2 px-4 border-b text-center">
-                  <div className="flex items-center justify-center space-x-2">
-                    <img
-                      src={getTeamLogo(item.equipo)}
-                      alt={`Logo del equipo ${item.equipo}`}
-                      className="w-8 h-8 object-contain"
-                    />
-                    <span>{item.name}</span>
+                <td className="py-2 px-4 border-b">
+                  <div className="flex items-center space-x-2">
+                    <div className="flex-shrink-0 ml-4">
+                      <img
+                        src={getTeamLogo(item.equipo)}
+                        alt={`Logo del equipo ${item.name}`}
+                        className="w-8 h-8 object-contain"
+                      />
+                    </div>
+                    <span className="flex-grow text-center">{item.name}</span>
                   </div>
                 </td>
                 <td className="py-2 px-4 border-b text-center">{item.JJ}</td>
