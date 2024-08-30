@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-function HomeBar() {
+function NavBar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -12,7 +12,7 @@ function HomeBar() {
 
     const handleResize = () => {
       if (mediaQuery.matches) {
-        setMenuOpen(false); 
+        setMenuOpen(false);
       }
     };
     mediaQuery.addEventListener("change", handleResize);
@@ -64,4 +64,4 @@ function HomeBar() {
   );
 }
 
-export default HomeBar;
+export default NavBar;

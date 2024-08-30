@@ -1,15 +1,17 @@
-import HomeBar from './HomeBar.jsx';
+import NavBar from './NavBar.jsx';
 import Logos from './Logos.jsx';
 import PlayerOfTheGame from './PlayerOfTheGame.jsx';
 import Standing from './Standings.jsx';
+import Footer from './Footer.jsx'
 
-function Home(){
+function Home() {
   return (
     <>
-        <HomeBar />
-        <Logos />
-        <PlayerOfTheGame/>
-        <Standing />
+      <NavBar />
+      <Logos />
+      <PlayerOfTheGame />
+      <Standing />
+      <Footer />
     </>
   )
 }
