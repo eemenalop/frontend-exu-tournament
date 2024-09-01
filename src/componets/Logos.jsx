@@ -15,7 +15,6 @@ function Logos() {
 
   return (
     <>
-      <h2 className="text-white">Equipos</h2>
       <div className="grid grid-cols-2 gap-2 p-2 w-full max-w-md mx-auto mt-24 mb-4">
         {teamLogos.map((team, index) => (
           <div
