@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Disclosure, DisclosureButton, Dialog, DialogBackdrop, DialogPanel, TransitionChild, Transition } from '@headlessui/react'
+import { Disclosure, DisclosureButton, Dialog, DialogBackdrop, DialogPanel, TransitionChild } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Link } from 'react-router-dom'
 import { socialNavigation } from '../socialNavigation.jsx'
@@ -16,11 +16,12 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
+
 export default function Navbar() {
     const [sidebarOpen, setSidebarOpen] = useState(false)
     const [showTeamsSubmenu, setShowTeamsSubmenu] = useState(false);
     const [teams, setTeams] = useState([]);
-
+    
     useEffect(() => {
         const loadTeams = async () => {
             const teamsData = await fetchTeamData();
@@ -28,11 +29,9 @@ export default function Navbar() {
         };
         loadTeams();
     }, []);
-
-    const toggleSidebar = () => {
-        setSidebarOpen(!sidebarOpen);
-    };
-
+    
+    
+    
     const toggleTeamsSubmenu = () => {
         setShowTeamsSubmenu(!showTeamsSubmenu);
     };
@@ -54,12 +53,14 @@ export default function Navbar() {
                         </div>
                         <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                             <div className="flex flex-shrink-0 items-center">
-                                <a href=""></a>
+                                <Link to='/'
+                                className='pointer'>
                                 <img
                                     alt="Basketball Exuitesa logo"
-                                    src="https://ulznkxovycorqeblrjxk.supabase.co/storage/v1/object/public/team-logos/exuitesa-logo.jpg?t=2024-08-31T16%3A15%3A55.690Z"
+                                    src="https://ulznkxovycorqeblrjxk.supabase.co/storage/v1/object/public/team-logos/exuitesa-logo.webp?t=2024-09-02T16%3A10%3A44.000Z"
                                     className="h-8 w-auto"
-                                />
+                                    />
+                                    </Link>
                             </div>
                             <div className="hidden sm:block sm:ml-6">
                                 <div className="flex space-x-4">
@@ -81,19 +82,20 @@ export default function Navbar() {
                                             </Link>
                                             <div
                                                 className={classNames(
-                                                    'absolute left-0 w-48 bg-gray-700 text-white rounded-md shadow-lg transition-transform duration-500 ease-in-out transform',
+                                                    'absolute left-0 w-64 bg-gray-700 text-white rounded-md shadow-lg transition-transform duration-500 ease-in-out transform z-50',
                                                     showTeamsSubmenu ? 'translate-y-0 opacity-100' : '-translate-y-2 opacity-0 pointer-events-none'
                                                 )}
                                             >
                                                 {showTeamsSubmenu && (
                                                     <ul>
                                                         {teams.map((team) => (
+                                                            
                                                             <li key={team.team_id}>
                                                                 <Link
                                                                     to={`/team/${team.team_id}`}
-                                                                    className="flex items-center p-2 hover:bg-gray-600 rounded-md text-sm"
+                                                                    className="flex items-center p-3 hover:bg-gray-600 rounded-md text-sm"
                                                                 >
-                                                                    <img src={team.logo_url} alt={team.team_name} className="h-6 w-6 mr-2" />
+                                                                    <img src={team.logo_url} alt={team.team_name} className="h-8 w-8 mr-3" />
                                                                     {team.team_name}
                                                                 </Link>
                                                             </li>
@@ -152,11 +154,11 @@ export default function Navbar() {
                         </TransitionChild>
                         <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-gray-900 px-6 pb-4 ring-1 ring-white/10">
                             <div className="flex h-16 shrink-0 items-center">
-                                <img
-                                    alt="Your Company"
-                                    src="https://ulznkxovycorqeblrjxk.supabase.co/storage/v1/object/public/team-logos/exuitesa-logo.jpg?t=2024-08-31T16%3A15%3A55.690Z"
-                                    className="h-8 w-auto"
-                                />
+                                    <img
+                                        alt="Exuitesa Basketball Logo"
+                                        src="https://ulznkxovycorqeblrjxk.supabase.co/storage/v1/object/public/team-logos/exuitesa-logo.webp?t=2024-09-02T16%3A10%3A44.000Z"
+                                        className="h-8 w-auto"
+                                        />
                             </div>
                             <nav className="flex flex-1 flex-col">
                                 <ul role="list" className="flex flex-1 flex-col gap-y-7">
@@ -171,15 +173,15 @@ export default function Navbar() {
                                                         {item.name}
                                                     </button>
                                                     {showTeamsSubmenu && (
-                                                        <div className="mt-2 bg-gray-700 text-white rounded-md shadow-lg">
+                                                        <div className="mt-2 bg-gray-700 text-white rounded-md shadow-lg w-64">
                                                             <ul>
                                                                 {teams.map((team) => (
                                                                     <li key={team.team_id}>
                                                                         <Link
                                                                             to={`/team/${team.team_id}`}
-                                                                            className="flex items-center p-2 hover:bg-gray-600 rounded-md text-sm"
+                                                                            className="flex items-center p-3 hover:bg-gray-600 rounded-md text-sm"
                                                                         >
-                                                                            <img src={team.logo_url} alt={team.team_name} className="h-6 w-6 mr-2" />
+                                                                            <img src={team.logo_url} alt={team.team_name} className="h-8 w-8 mr-3" />
                                                                             {team.team_name}
                                                                         </Link>
                                                                     </li>
