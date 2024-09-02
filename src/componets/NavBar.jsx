@@ -43,12 +43,12 @@ export default function Navbar() {
                 <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
                     <div className="relative flex h-16 items-center justify-between">
                         <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-                            {/* Mobile menu button */}
+                            {/* Botón del menú móvil */}
                             <DisclosureButton
                                 onClick={() => setSidebarOpen(true)}
                                 className="group relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
                             >
-                                <span className="sr-only">Open main menu</span>
+                                <span className="sr-only">Abrir menú principal</span>
                                 <Bars3Icon aria-hidden="true" className="h-6 w-6" />
                             </DisclosureButton>
                         </div>
@@ -66,7 +66,7 @@ export default function Navbar() {
                                     {navigation.map((item) => (item.name === 'Equipos' ? (
                                         <div
                                             key={item.name}
-                                            className="relative"
+                                            className="relative group"
                                             onMouseEnter={() => setShowTeamsSubmenu(true)}
                                             onMouseLeave={() => setShowTeamsSubmenu(false)}
                                         >
@@ -74,27 +74,31 @@ export default function Navbar() {
                                                 to={item.href}
                                                 className={classNames(
                                                     item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                                                    'rounded-md px-3 py-2 text-sm font-medium'
+                                                    'rounded-md px-3 py-2 text-sm font-medium flex items-center'
                                                 )}
                                             >
                                                 {item.name}
                                             </Link>
                                             <div
                                                 className={classNames(
-                                                    'absolute left-0 mt-2 w-48 bg-gray-700 text-white rounded-md shadow-lg transition-transform duration-300 ease-in-out transform',
-                                                    showTeamsSubmenu ? 'translate-y-0 opacity-100' : '-translate-y-2 opacity-0'
+                                                    'absolute left-0 w-48 bg-gray-700 text-white rounded-md shadow-lg transition-transform duration-500 ease-in-out transform',
+                                                    showTeamsSubmenu ? 'translate-y-0 opacity-100' : '-translate-y-2 opacity-0 pointer-events-none'
                                                 )}
                                             >
                                                 {showTeamsSubmenu && (
                                                     <ul>
                                                         {teams.map((team) => (
-                                                            <li key={team.team_id} className="flex items-center p-2 hover:bg-gray-600">
-                                                                <img src={team.logo_url} alt={team.team_name} className="h-6 w-6 mr-2" />
-                                                                <Link to={`/team/${team.team_id}`} className="text-sm">{team.team_name}</Link>
+                                                            <li key={team.team_id}>
+                                                                <Link
+                                                                    to={`/team/${team.team_id}`}
+                                                                    className="flex items-center p-2 hover:bg-gray-600 rounded-md text-sm"
+                                                                >
+                                                                    <img src={team.logo_url} alt={team.team_name} className="h-6 w-6 mr-2" />
+                                                                    {team.team_name}
+                                                                </Link>
                                                             </li>
                                                         ))}
                                                     </ul>
-
                                                 )}
                                             </div>
                                         </div>
@@ -104,7 +108,7 @@ export default function Navbar() {
                                             to={item.href}
                                             className={classNames(
                                                 item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                                                'rounded-md px-3 py-2 text-sm font-medium'
+                                                'rounded-md px-3 py-2 text-sm font-medium flex items-center'
                                             )}
                                         >
                                             {item.name}
@@ -127,22 +131,21 @@ export default function Navbar() {
                 </div>
             </Disclosure >
 
-            {/* Sidebar for mobile */}
-            < Dialog open={sidebarOpen} onClose={() => setSidebarOpen(false)
-            } className="relative z-50 lg:hidden" >
+            {/* Sidebar para móvil */}
+            <Dialog open={sidebarOpen} onClose={() => setSidebarOpen(false)} className="relative z-50 lg:hidden">
                 <DialogBackdrop
                     transition
-                    className="fixed inset-0 bg-gray-900/80 transition-opacity duration-300 ease-linear data-[closed]:opacity-0"
+                    className="fixed inset-0 bg-gray-900/80 transition-opacity duration-300 ease-linear"
                 />
                 <div className="fixed inset-0 flex">
                     <DialogPanel
                         transition
-                        className="relative mr-16 flex w-full max-w-xs flex-1 transform transition duration-300 ease-in-out data-[closed]:-translate-x-full"
+                        className="relative mr-16 flex w-full max-w-xs flex-1 transform transition duration-300 ease-in-out"
                     >
                         <TransitionChild>
-                            <div className="absolute left-full top-0 flex w-16 justify-center pt-5 duration-300 ease-in-out data-[closed]:opacity-0">
+                            <div className="absolute left-full top-0 flex w-16 justify-center pt-5">
                                 <button type="button" onClick={() => setSidebarOpen(false)} className="-m-2.5 p-2.5">
-                                    <span className="sr-only">Close sidebar</span>
+                                    <span className="sr-only">Cerrar barra lateral</span>
                                     <XMarkIcon aria-hidden="true" className="h-6 w-6 text-white" />
                                 </button>
                             </div>
@@ -171,9 +174,14 @@ export default function Navbar() {
                                                         <div className="mt-2 bg-gray-700 text-white rounded-md shadow-lg">
                                                             <ul>
                                                                 {teams.map((team) => (
-                                                                    <li key={team.team_id} className="flex items-center p-2 hover:bg-gray-600">
-                                                                        <img src={team.logo_url} alt={team.team_name} className="h-6 w-6 mr-2" />
-                                                                        <Link to={`/team/${team.team_id}`} className="text-sm">{team.team_name}</Link>
+                                                                    <li key={team.team_id}>
+                                                                        <Link
+                                                                            to={`/team/${team.team_id}`}
+                                                                            className="flex items-center p-2 hover:bg-gray-600 rounded-md text-sm"
+                                                                        >
+                                                                            <img src={team.logo_url} alt={team.team_name} className="h-6 w-6 mr-2" />
+                                                                            {team.team_name}
+                                                                        </Link>
                                                                     </li>
                                                                 ))}
                                                             </ul>
@@ -183,12 +191,7 @@ export default function Navbar() {
                                             ) : (
                                                 <Link
                                                     to={item.href}
-                                                    className={classNames(
-                                                        item.current
-                                                            ? 'bg-gray-800 text-white'
-                                                            : 'text-gray-400 hover:bg-gray-800 hover:text-white',
-                                                        'group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6',
-                                                    )}
+                                                    className="group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-400 hover:bg-gray-800 hover:text-white"
                                                 >
                                                     {item.name}
                                                 </Link>
@@ -200,7 +203,7 @@ export default function Navbar() {
                         </div>
                     </DialogPanel>
                 </div>
-            </Dialog >
+            </Dialog>
         </>
     )
 }

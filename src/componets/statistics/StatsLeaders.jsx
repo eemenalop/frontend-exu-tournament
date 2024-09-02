@@ -3,8 +3,9 @@ import React, { useEffect, useState } from 'react';
 const StatsLeaders = ({ title, statKey }) => {
 
     return (
-        <div>TOP 10
-        </div>
+        <>
+            <h2>Lideres del torneo</h2>
+        </>
     );
 };
 
