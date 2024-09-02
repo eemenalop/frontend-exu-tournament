@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
 
-const StatsLeaders = ({ title, statKey }) => {
+
+const StatsLeaders = () => {
 
     return (
         <>
