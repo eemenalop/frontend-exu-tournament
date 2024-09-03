@@ -21,7 +21,7 @@ export default function Navbar() {
     const [sidebarOpen, setSidebarOpen] = useState(false)
     const [showTeamsSubmenu, setShowTeamsSubmenu] = useState(false);
     const [teams, setTeams] = useState([]);
-    
+
     useEffect(() => {
         const loadTeams = async () => {
             const teamsData = await fetchTeamData();
@@ -29,9 +29,9 @@ export default function Navbar() {
         };
         loadTeams();
     }, []);
-    
-    
-    
+
+
+
     const toggleTeamsSubmenu = () => {
         setShowTeamsSubmenu(!showTeamsSubmenu);
     };
@@ -54,13 +54,13 @@ export default function Navbar() {
                         <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                             <div className="flex flex-shrink-0 items-center">
                                 <Link to='/'
-                                className='pointer'>
-                                <img
-                                    alt="Basketball Exuitesa logo"
-                                    src="https://ulznkxovycorqeblrjxk.supabase.co/storage/v1/object/public/team-logos/exuitesa-logo.webp?t=2024-09-02T16%3A10%3A44.000Z"
-                                    className="h-8 w-auto"
+                                    className='pointer'>
+                                    <img
+                                        alt="Exuitesa Basketball logo"
+                                        src="https://ulznkxovycorqeblrjxk.supabase.co/storage/v1/object/public/team-logos/exuitesa-logo.webp?t=2024-09-02T16%3A10%3A44.000Z"
+                                        className="h-10 w-auto"
                                     />
-                                    </Link>
+                                </Link>
                             </div>
                             <div className="hidden sm:block sm:ml-6">
                                 <div className="flex space-x-4">
@@ -82,14 +82,14 @@ export default function Navbar() {
                                             </Link>
                                             <div
                                                 className={classNames(
-                                                    'absolute left-0 w-64 bg-gray-700 text-white rounded-md shadow-lg transition-transform duration-500 ease-in-out transform z-50',
+                                                    'absolute left-0 w-64 bg-gray-700 text-white rounded-md shadow-lg transition-all duration-500 ease-in-out transform z-50',
                                                     showTeamsSubmenu ? 'translate-y-0 opacity-100' : '-translate-y-2 opacity-0 pointer-events-none'
                                                 )}
                                             >
                                                 {showTeamsSubmenu && (
                                                     <ul>
                                                         {teams.map((team) => (
-                                                            
+
                                                             <li key={team.team_id}>
                                                                 <Link
                                                                     to={`/team/${team.team_id}`}
@@ -137,15 +137,15 @@ export default function Navbar() {
             <Dialog open={sidebarOpen} onClose={() => setSidebarOpen(false)} className="relative z-50 lg:hidden">
                 <DialogBackdrop
                     transition
-                    className="fixed inset-0 bg-gray-900/80 transition-opacity duration-300 ease-linear"
+                    className="fixed inset-0 bg-gray-900/80 transition-opacity duration-300 ease-linear data-[closed]:opacity-0"
                 />
                 <div className="fixed inset-0 flex">
                     <DialogPanel
                         transition
-                        className="relative mr-16 flex w-full max-w-xs flex-1 transform transition duration-300 ease-in-out"
+                        className="relative mr-16 flex w-full max-w-xs flex-1 transform transition duration-300 ease-in-out data-[closed]:-translate-x-full"
                     >
                         <TransitionChild>
-                            <div className="absolute left-full top-0 flex w-16 justify-center pt-5">
+                            <div className="absolute left-full top-0 flex w-16 justify-center pt-5 duration-300 ease-in-out data-[closed]:opacity-0">
                                 <button type="button" onClick={() => setSidebarOpen(false)} className="-m-2.5 p-2.5">
                                     <span className="sr-only">Cerrar barra lateral</span>
                                     <XMarkIcon aria-hidden="true" className="h-6 w-6 text-white" />
@@ -154,11 +154,11 @@ export default function Navbar() {
                         </TransitionChild>
                         <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-gray-900 px-6 pb-4 ring-1 ring-white/10">
                             <div className="flex h-16 shrink-0 items-center">
-                                    <img
-                                        alt="Exuitesa Basketball Logo"
-                                        src="https://ulznkxovycorqeblrjxk.supabase.co/storage/v1/object/public/team-logos/exuitesa-logo.webp?t=2024-09-02T16%3A10%3A44.000Z"
-                                        className="h-8 w-auto"
-                                        />
+                                <img
+                                    alt="Exuitesa Basketball Logo"
+                                    src="https://ulznkxovycorqeblrjxk.supabase.co/storage/v1/object/public/team-logos/exuitesa-logo.webp?t=2024-09-02T16%3A10%3A44.000Z"
+                                    className="h-12 w-auto"
+                                />
                             </div>
                             <nav className="flex flex-1 flex-col">
                                 <ul role="list" className="flex flex-1 flex-col gap-y-7">
