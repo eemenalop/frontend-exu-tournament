@@ -24,22 +24,16 @@ const GeneralStats = () => {
                     selectedMatchType={matchType}
                     setSelectedMatchType={setMatchType}
                 />
-                <div className='max-w-6xl mx-auto'>
-                    <div className='flex flex-wrap justify-center gap-8'>
-                        <div className='flex flex-wrap justify-center gap-8'>
-                            <StatsLeaders matchType={matchType} statType='points' />
-                            <StatsLeaders matchType={matchType} statType="assists" />
-                            <StatsLeaders matchType={matchType} statType="rebounds" />
-                        </div>
-                        <div className='flex flex-wrap justify-center gap-8'>
-                            <StatsLeaders matchType={matchType} statType="steals" />
-                            <StatsLeaders matchType={matchType} statType="blocks" />
-                            <StatsLeaders matchType={matchType} statType="turnovers" />
-                        </div>
-                        <div className='flex flex-wrap justify-center gap-8'>
-                            <StatsLeaders matchType={matchType} statType="threeptm" />
-                            <StatsLeaders matchType={matchType} statType="pra" />
-                        </div>
+                <div className='max-w-4xl mx-auto'>
+                    <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4'>
+                        <StatsLeaders matchType={matchType} statType='points' />
+                        <StatsLeaders matchType={matchType} statType="assists" />
+                        <StatsLeaders matchType={matchType} statType="rebounds" />
+                        <StatsLeaders matchType={matchType} statType="steals" />
+                        <StatsLeaders matchType={matchType} statType="blocks" />
+                        <StatsLeaders matchType={matchType} statType="turnovers" />
+                        <StatsLeaders matchType={matchType} statType="threeptm" />
+                        <StatsLeaders matchType={matchType} statType="pra" />
                     </div>
                 </div>
             </div>
