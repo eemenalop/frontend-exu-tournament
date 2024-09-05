@@ -1,5 +1,6 @@
+/* eslint-disable react/prop-types */
 import { useState } from 'react'
-import { Label, Listbox, ListboxButton, ListboxOption, ListboxOptions } from '@headlessui/react'
+import { Listbox, ListboxButton, ListboxOption, ListboxOptions } from '@headlessui/react'
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
 
 const matchesTypes = [
@@ -8,7 +9,7 @@ const matchesTypes = [
     { id: 3, matchType: 'Final' }*/
 ]
 
-export default function MatchTypeFilter({ selectedMatchType, setSelectedMatchType }) {
+export default function MatchTypeFilter({setSelectedMatchType }) {
     const [selected, setSelected] = useState(matchesTypes[0])
 
     const handleChange = (value) => {
