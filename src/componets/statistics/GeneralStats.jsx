@@ -8,7 +8,7 @@ import MatchTypeFilter from '../MatchTypeFilter';
 const GeneralStats = () => {
 
     const [matchType, setMatchType] = useState('Regular');
-    const [statType, setStatType] = useState('points');
+    /*const [statType, setStatType] = useState('points');*/
 
     return (
         <>
