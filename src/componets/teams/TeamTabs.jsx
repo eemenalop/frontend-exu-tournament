@@ -1,6 +1,7 @@
 import { BuildingOfficeIcon, UserIcon, UsersIcon } from '@heroicons/react/20/solid'
 import { useState } from 'react'
-import TeamRoster from './TeamRoster'
+import TeamRosterTab from './TeamRosterTab';
+import TeamStatsTab from './TeamStatsTab';
 
 const tabs = [
   { name: 'Roster', key: 'roster', icon: UserIcon, current: true },
@@ -51,8 +52,8 @@ export default function TeamTabs({ teamId }) {
         </div>
       </div>
       <div className="mt-6">
-        {selectedTab === 'roster' && <TeamRoster teamId={teamId} />}
-        {selectedTab === 'estadisticas' && <div className='text-slate-200'>Estadísticas</div>}
+        {selectedTab === 'roster' && <TeamRosterTab teamId={teamId} />}
+        {selectedTab === 'estadisticas' && <TeamStatsTab />}
         {selectedTab === 'calendario' && <div className='text-slate-200'>Calendario</div>}
       </div>
     </div>

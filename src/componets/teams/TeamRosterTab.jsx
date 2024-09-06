@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 
 // eslint-disable-next-line react/prop-types
-export default function TeamRoster({teamId}) {
+export default function TeamRosterTab({teamId}) {
 
   const [players, setPlayers]= useState([]);
 
@@ -26,7 +26,7 @@ export default function TeamRoster({teamId}) {
       <div className="bg-gray-900 py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6 text-center lg:px-8">
           <div className="mx-auto max-w-2xl">
-            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">Meet our team</h2>
+            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">Roster</h2>
             <p className="mt-4 text-lg leading-8 text-gray-400">
               We’re a dynamic group of individuals who are passionate about what we do.
             </p>
