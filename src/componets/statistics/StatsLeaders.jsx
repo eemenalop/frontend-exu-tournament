@@ -27,12 +27,12 @@ const StatsLeaders = ({ matchType, statType }) => {
 
     return (
         <div className="my-4 p-4 bg-white shadow-lg rounded-lg">
-            <h3 className="text-xl font-semibold text-gray-800 mb-2 border-b border-gray-300 pb-1">
+            <h3 className="text-xl font-semibold text-white mb-2 border-b border-gray-300 pb-1 text-center bg-gray-700">
                 {statType.toUpperCase()}
             </h3>
             <ul className="space-y-1">
                 {stats.map((player, index) => (
-                    <li key={index} className="flex items-center p-3 bg-gray-100 rounded-lg shadow-sm hover:bg-gray-200 transition duration-300 ease-in-out">
+                    <li key={index} className="flex items-center p-3 h-10 bg-gray-100 rounded-lg shadow-sm hover:bg-gray-300 transition duration-300 ease-in-out">
                         <span className="w-6 h-6 flex items-center justify-center text-sm font-semibold text-white bg-blue-500 rounded-full mr-2">
                             {player.rank}
                         </span>
