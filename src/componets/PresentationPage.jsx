@@ -6,10 +6,10 @@ const PresentationPage = ({ imageURL }) => {
     }
 
     return (
-        <div className="relative h-60 bg-gray-100 z-10">
+        <div className="relative h-96 bg-gray-100 z-10">
             <img
                 src={imageURL}
-                alt="Presentation"
+                alt="Presentation page"
                 className="absolute inset-0 w-full h-full object-cover"
             />
         </div>

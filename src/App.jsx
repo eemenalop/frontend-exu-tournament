@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import AdminHome from './adminComponets/AdminHome';
 import ProtectedRoute from './adminComponets/ProtectedRoute';
 import GeneralStats from './componets/statistics/GeneralStats';
+import Team from './componets/teams/Team';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
           <Route path='/admin-home' element={<AdminHome />} />
         </Route>
         <Route path="/GeneralStats" element={<GeneralStats />} />
+        <Route path="/team/:teamId" element={<Team />} />
       </Routes>
     </Router>
   );
