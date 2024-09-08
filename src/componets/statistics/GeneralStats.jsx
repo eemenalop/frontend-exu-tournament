@@ -8,7 +8,6 @@ import MatchTypeFilter from './MatchTypeFilter';
 const GeneralStats = () => {
 
     const [matchType, setMatchType] = useState('Regular');
-    /*const [statType, setStatType] = useState('points');*/
 
     return (
         <>
@@ -22,7 +21,6 @@ const GeneralStats = () => {
                 </h2>
                 <div className='flex justify-end mb-11'>
                     <MatchTypeFilter
-                        selectedMatchType={matchType}
                         setSelectedMatchType={setMatchType}
                         />
                 </div>
@@ -34,8 +32,11 @@ const GeneralStats = () => {
                         <StatsLeaders matchType={matchType} statType="steals" />
                         <StatsLeaders matchType={matchType} statType="blocks" />
                         <StatsLeaders matchType={matchType} statType="turnovers" />
-                        <StatsLeaders matchType={matchType} statType="threeptm" />
                         <StatsLeaders matchType={matchType} statType="pra" />
+                        <StatsLeaders matchType={matchType} statType="fg_percentage" />
+                        <StatsLeaders matchType={matchType} statType="threeptm" />
+                        <StatsLeaders matchType={matchType} statType="threept_percentage" />
+                        <StatsLeaders matchType={matchType} statType="ft_percentage" />
                     </div>
                 </div>
             </div>

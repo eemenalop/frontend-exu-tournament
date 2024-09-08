@@ -53,7 +53,7 @@ export default function TeamTabs({ teamId }) {
       </div>
       <div className="mt-6">
         {selectedTab === 'roster' && <TeamRosterTab teamId={teamId} />}
-        {selectedTab === 'estadisticas' && <TeamStatsTab />}
+        {selectedTab === 'estadisticas' && <TeamStatsTab teamId={teamId}/>}
         {selectedTab === 'calendario' && <div className='text-slate-200'>Calendario</div>}
       </div>
     </div>
