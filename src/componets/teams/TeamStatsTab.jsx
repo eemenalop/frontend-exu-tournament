@@ -42,7 +42,7 @@ import MatchTypeFilter from "../statistics/MatchTypeFilter";
 
       const roundValue = (value, isPercentage = false) => {
         if (value === null || value === undefined) {
-            return 'N/A'; // O algún otro valor de tu preferencia para datos no disponibles
+            return 'N/A';
         }
         return isPercentage ? (value * 100).toFixed(2) : value.toFixed(1);
     };

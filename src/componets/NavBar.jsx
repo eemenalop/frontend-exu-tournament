@@ -7,7 +7,7 @@ import { fetchTeamData } from '../teamData.js'
 
 const navigation = [
     { name: 'Inicio', href: '/', current: false },
-    { name: 'Equipos', href: '#', current: false, hasSubmenu: true },
+    { name: 'Equipos', href: '', current: false, hasSubmenu: true },
     { name: 'Estadisticas', href: '/GeneralStats', current: false },
     { name: 'Historia', href: '#', current: false },
 ]
@@ -30,10 +30,13 @@ export default function Navbar() {
         loadTeams();
     }, []);
 
-
-
     const toggleTeamsSubmenu = () => {
         setShowTeamsSubmenu(!showTeamsSubmenu);
+    };
+
+    const handleTeamClick = () => {
+        setShowTeamsSubmenu(false);
+        setSidebarOpen(false);
     };
 
     return (
@@ -89,9 +92,9 @@ export default function Navbar() {
                                                 {showTeamsSubmenu && (
                                                     <ul>
                                                         {teams.map((team) => (
-
                                                             <li key={team.team_id}>
                                                                 <Link
+                                                                    onClick= {handleTeamClick}
                                                                     to={`/team/${team.team_id}`}
                                                                     className="flex items-center p-3 hover:bg-gray-600 rounded-md text-sm"
                                                                 >
@@ -178,6 +181,7 @@ export default function Navbar() {
                                                                 {teams.map((team) => (
                                                                     <li key={team.team_id}>
                                                                         <Link
+                                                                            onClick={handleTeamClick}
                                                                             to={`/team/${team.team_id}`}
                                                                             className="flex items-center p-3 hover:bg-gray-600 rounded-md text-sm"
                                                                         >
