@@ -1,12 +1,15 @@
 import Navbar from '../NavBar.jsx'
 import Footer from '../Footer.jsx'
-const Player = () => {
+import { PlayerProfile }  from './PlayerProfile.jsx'
+
+
+
+export default function Player(){
   return (
     <>
-    <Navbar />
-    <Footer />
+      <Navbar />
+      <PlayerProfile />
+      <Footer />
     </>
   )
 }
-
-export default Player

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import MatchTypeFilter from "../statistics/MatchTypeFilter";
+import { Link } from "react-router-dom";
 
   
   // eslint-disable-next-line react/prop-types
@@ -120,7 +121,13 @@ import MatchTypeFilter from "../statistics/MatchTypeFilter";
                   <tbody className="divide-y divide-gray-200 bg-white">
                     {playerStats.map((player) => (
                       <tr key={player.player_id}>
-                        <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{player.player_name}</td>
+                        <td className="whitespace-nowrap px-3 py-4 text-sm text-black">
+                          <Link
+                            className="hover:underline"
+                            to={`/player/${player.player_id}`}>
+                            {player.player_name}
+                          </Link>
+                        </td>
                         <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{player.games_played}</td>
                         <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(player.points)}</td>
                         <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(player.rebounds)}</td>

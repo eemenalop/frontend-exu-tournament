@@ -5,6 +5,7 @@ import AdminHome from './adminComponets/AdminHome';
 import ProtectedRoute from './adminComponets/ProtectedRoute';
 import GeneralStats from './componets/statistics/GeneralStats';
 import Team from './componets/teams/Team';
+import Player from './componets/players/Player';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         </Route>
         <Route path="/GeneralStats" element={<GeneralStats />} />
         <Route path="/team/:teamId" element={<Team />} />
+        <Route path="/player/:player_id" element={<Player />} />
       </Routes>
     </Router>
   );

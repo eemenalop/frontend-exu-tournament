@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const StatsLeaders = ({ matchType, statType }) => {
     const [stats, setStats] = useState([]);
@@ -37,8 +38,14 @@ const StatsLeaders = ({ matchType, statType }) => {
                             {player.rank}
                         </span>
                         <div className='flex-grow'>
-                            <p className='text-base font-bold text-gray-900'>{player.player_name}</p>
-                            <p className="text-xs text-gray-600">{player.team_name}</p>
+                            <p className='text-base font-bold text-gray-900'>
+                                <Link
+                                    to={`/player/${player.player_id}`}
+                                    className='hover:underline'
+                                >{player.player_name}
+                                </Link>
+                                    </p>
+                                <p className="text-xs text-gray-600">{player.team_name}</p>
                         </div>
                         <p className="text-2xl font-bold text-gray-600">
                             {player.stat_per_game}

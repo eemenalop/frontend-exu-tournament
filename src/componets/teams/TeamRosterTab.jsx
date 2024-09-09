@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { Link } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
 export default function TeamRosterTab({teamId}) {
@@ -41,12 +42,17 @@ export default function TeamRosterTab({teamId}) {
                 <h3 className="mt-6 text-base font-semibold leading-7 tracking-tight text-white">{player.player_name}</h3>
                 <p className="text-sm leading-6 text-gray-400">{player.position}</p>
                 <p className="text-sm leading-6 text-gray-400">#{player.number}</p>
-                <button
-                    type="button"
-                    className="rounded-full bg-white px-4 py-2.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 mt-3"
-                  >
-                    PLAYER STATS 
-                </button>
+                <Link
+                  to={`/player/${players.player_id}`}
+                >
+                  <button
+                      type="button"
+                      className="rounded-full bg-white px-4 py-2.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 mt-3"
+                    >
+                      
+                      PLAYER STATS 
+                  </button>
+                  </Link>
               </li>
             ))}
           </ul>
