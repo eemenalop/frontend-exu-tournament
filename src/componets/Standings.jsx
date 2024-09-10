@@ -70,7 +70,7 @@ function Standing() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen">
+    <div className="flex justify-center items-center mt-10">
       <div className="overflow-x-auto w-full max-w-md mx-auto">
         <table className="min-w-full bg-white border border-gray-200">
           <thead>

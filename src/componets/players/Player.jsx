@@ -3,11 +3,10 @@ import Footer from '../Footer.jsx'
 import { PlayerProfile }  from './PlayerProfile.jsx'
 import { useParams } from "react-router-dom"
 
-
-
 export default function Player(){
 
-  const {playerId} = useParams();
+  const { playerId } = useParams();
+  
   return (
     <>
       <Navbar />

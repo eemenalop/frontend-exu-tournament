@@ -19,7 +19,7 @@ function App() {
         </Route>
         <Route path="/GeneralStats" element={<GeneralStats />} />
         <Route path="/team/:teamId" element={<Team />} />
-        <Route path="/player/:player_id" element={<Player />} />
+        <Route path="/player/:playerId" element={<Player />} /> 
       </Routes>
     </Router>
   );
