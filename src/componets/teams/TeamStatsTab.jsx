@@ -17,7 +17,6 @@ import { Link } from "react-router-dom";
               throw new Error ('Error fetching player stats');
             }
             const data = await response.json();
-            console.log(data);
             setPlayerStats(data);
 
           } catch (error) {

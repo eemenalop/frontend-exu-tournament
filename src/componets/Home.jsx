@@ -9,7 +9,7 @@ function Home() {
   return (
     <>
       <NavBar />
-      <Carousel />
+      <Carousel/>
       <Logos />
       <PlayerOfTheGame />
       <Standing />

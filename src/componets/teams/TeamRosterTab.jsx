@@ -43,13 +43,12 @@ export default function TeamRosterTab({teamId}) {
                 <p className="text-sm leading-6 text-gray-400">{player.position}</p>
                 <p className="text-sm leading-6 text-gray-400">#{player.number}</p>
                 <Link
-                  to={`/player/${players.player_id}`}
+                  to={`/player/${player.player_id}`}
                 >
                   <button
                       type="button"
                       className="rounded-full bg-white px-4 py-2.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 mt-3"
                     >
-                      
                       PLAYER STATS 
                   </button>
                   </Link>

@@ -1,33 +1,44 @@
+import { useState, useEffect } from "react"
 import MatchTypeFilter from "../statistics/MatchTypeFilter"
 
 
-export const PlayerProfile = () => {
+// eslint-disable-next-line react/prop-types
+export const PlayerProfile = ({playerId}) => {
+    const [playerInfo, setPlayerInfo] = useState([]);
+    const [matchType, setMatchType] = useState('Regular');
+
+    useEffect(()=>{
+
+        async function fetchPlayerInfo(){
+            try {
+                const response = await fetch(`http://localhost:4000/.netlify/functions/getStatsPerGame?match_type=${matchType}&player_id=${playerId}`)
+                if(!response.ok){
+                    throw new Error ('Error fetching Player Info')
+                }
+
+                const data = await response.json();
+                setPlayerInfo(data);
+            } catch (error) {
+                console.error('Error fetching stats:', error);
+            }
+
+        }
+        fetchPlayerInfo();
+    }, [matchType, playerId])
+    
     return (
         <>
-            <div className='flex'>
-                <div>
-                    <img src="" alt="Team Logo" />
-                    <img src="" alt="Player Image" />
-                <section>
-                    Popiwa | #26 | Center
-                </section>
-                <section>Edgar Mena</section>
-                </div>
-                <div>
-                    <div>PPG</div>
-                    <div>RPG</div>
-                    <div>APG</div>
-                    <div>PRA</div>
-                </div>
-            </div>
-
+            <div
+            className="text-white">{playerInfo.player_name}</div>
             <div>
-                <MatchTypeFilter />
+            <MatchTypeFilter
+                setSelectedMatchType={setMatchType}
+                />
             </div>
 
             <div>
                 
             </div>
-            </>
+        </>
   )
 }
