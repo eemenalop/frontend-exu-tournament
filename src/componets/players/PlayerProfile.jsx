@@ -11,7 +11,7 @@ export const PlayerProfile = ({ playerId }) => {
 
         async function fetchPlayerInfo(){
             try {
-                const response = await fetch(`https://exuitesa-basketball.netlify.app/.netlify/functions/getStatsPerGame?match_type=${matchType}&player_id=${playerId}`)
+                const response = await fetch(`https://exuitesa-basketball-backend.netlify.app/.netlify/functions/getStatsPerGame?match_type=${matchType}&player_id=${playerId}`)
                 if(!response.ok){
                     throw new Error ('Error fetching Player Info')
                 }
