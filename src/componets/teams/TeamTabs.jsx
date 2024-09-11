@@ -24,7 +24,7 @@ export default function TeamTabs({ teamId }) {
           <nav
             aria-label="Tabs"
             className="-mb-px flex justify-center space-x-4 sm:space-x-8 flex-wrap"
-          > {/* Ajuste flex-wrap para que las pestañas no se salgan en pantallas pequeñas */}
+          > 
             {tabs.map((tab) => (
               <button
                 key={tab.key}
