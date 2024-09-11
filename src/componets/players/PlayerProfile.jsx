@@ -11,7 +11,7 @@ export const PlayerProfile = ({ playerId }) => {
 
         async function fetchPlayerInfo(){
             try {
-                const response = await fetch(`http://localhost:4000/.netlify/functions/getStatsPerGame?match_type=${matchType}&player_id=${playerId}`)
+                const response = await fetch(`https://exuitesa-basketball.netlify.app/.netlify/functions/getStatsPerGame?match_type=${matchType}&player_id=${playerId}`)
                 if(!response.ok){
                     throw new Error ('Error fetching Player Info')
                 }
@@ -81,12 +81,13 @@ export const PlayerProfile = ({ playerId }) => {
             </div>
             
 
-            <div className="mt-8 flow-root mx-52">
-            <div className="mb-6">
-            <MatchTypeFilter
-                setSelectedMatchType={setMatchType}
-                />
-            </div>
+            <div className="px-4 sm:px-6 lg:px-8">
+                <div className="mb-6">
+                <MatchTypeFilter
+                    setSelectedMatchType={setMatchType}
+                    />
+                    </div>
+                <div className="mt-8 flow-root mx-6 ">
                 <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
                     <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:rounded-lg">
@@ -146,32 +147,29 @@ export const PlayerProfile = ({ playerId }) => {
                             </th>
                             </tr>
                         </thead>
-                        <tbody className="divide-y divide-gray-200 bg-white">
-                            {/*{playerInfo.map((player) => (
-                            <tr key={player.player_id}>
-                                <td className="whitespace-nowrap px-3 py-4 text-sm text-black">
-                                </td>
-                                <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{player.games_played}</td>
-                                <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(player.points)}</td>
-                                <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(player.rebounds)}</td>
-                                <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(player.assists)}</td>
-                                <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(player.steals)}</td>
-                                <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(player.blocks)}</td>
-                                <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(player.turnovers)}</td>
-                                <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(player.fgm)}</td>
-                                <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(player.fga)}</td>
-                                <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(player.fg_percentage)}</td>
-                                <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(player.three_ptm)}</td>
-                                <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(player.three_pta)}</td>
-                                <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(player.threept_percentage)}</td>
-                                <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(player.ftm)}</td>
-                                <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(player.fta)}</td>
-                                <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(player.ft_percentage)}</td>
-                                <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(player.pra)}</td>
-                            </tr>
-                            ))}*/}
-                        </tbody>
+                                    <tbody className="divide-y divide-gray-200 bg-white">
+                                <tr>
+                                    <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{playerInfo.games_played}</td>
+                                    <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(playerInfo.points)}</td>
+                                    <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(playerInfo.rebounds)}</td>
+                                    <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(playerInfo.assists)}</td>
+                                    <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(playerInfo.steals)}</td>
+                                    <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(playerInfo.blocks)}</td>
+                                    <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(playerInfo.turnovers)}</td>
+                                    <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(playerInfo.fgm)}</td>
+                                    <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(playerInfo.fga)}</td>
+                                    <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(playerInfo.fg_percentage)}</td>
+                                    <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(playerInfo.three_ptm)}</td>
+                                    <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(playerInfo.three_pta)}</td>
+                                    <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(playerInfo.threept_percentage)}</td>
+                                    <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(playerInfo.ftm)}</td>
+                                    <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(playerInfo.fta)}</td>
+                                    <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(playerInfo.ft_percentage)}</td>
+                                    <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(playerInfo.pra)}</td>
+                                </tr>
+                            </tbody>
                         </table>
+                    </div>
                     </div>
                     </div>
                 </div>
