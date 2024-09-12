@@ -7,6 +7,7 @@ export default function Player(){
 
   const { playerId } = useParams();
   
+  
   return (
     <>
       <Navbar />

@@ -3,7 +3,7 @@ import MatchTypeFilter from "../statistics/MatchTypeFilter"
 
 
 // eslint-disable-next-line react/prop-types
-export const PlayerProfile = ({ playerId }) => {
+export const PlayerProfile = ({playerId }) => {
     const [playerInfo, setPlayerInfo] = useState(null);
     const [matchType, setMatchType] = useState('Regular');
 
@@ -11,7 +11,7 @@ export const PlayerProfile = ({ playerId }) => {
 
         async function fetchPlayerInfo(){
             try {
-                const response = await fetch(`https://exuitesa-basketball-backend.netlify.app/.netlify/functions/getStatsPerGame?match_type=${matchType}&player_id=${playerId}`)
+                const response = await fetch(`http://localhost:4000/.netlify/functions/getStatsPerGame?match_type=${matchType}&player_id=${playerId}`)
                 if(!response.ok){
                     throw new Error ('Error fetching Player Info')
                 }
@@ -20,6 +20,7 @@ export const PlayerProfile = ({ playerId }) => {
                 if (data.length > 0) {
                     setPlayerInfo(data[0])
                 }
+                
             } catch (error) {
                 console.error('Error fetching stats:', error);
             }

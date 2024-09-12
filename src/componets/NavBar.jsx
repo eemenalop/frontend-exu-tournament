@@ -6,9 +6,9 @@ import { socialNavigation } from '../socialNavigation.jsx'
 
 const navigation = [
     { name: 'Inicio', href: '/', current: false },
-    { name: 'Equipos', href: '', current: false, hasSubmenu: true },
+    { name: 'Equipos', current: false, hasSubmenu: true },
     { name: 'Estadisticas', href: '/GeneralStats', current: false },
-    { name: 'Historia', href: '#', current: false },
+    { name: 'Historia', href: '/historia', current: false },
 ]
 
 function classNames(...classes) {
@@ -23,7 +23,7 @@ export default function Navbar() {
 
     useEffect(() => {
         const loadTeams = async () => {
-            const response = await fetch(`https://exuitesa-tournament-backend.netlify.app/.netlify/functions/getAllTeams`)
+            const response = await fetch(`http://localhost:4000/.netlify/functions/getAllTeams`)
             if(!response.ok){
                 throw new Error ('Error fetching player stats');
             }

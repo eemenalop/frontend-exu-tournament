@@ -12,7 +12,7 @@ function LogIn() {
         event.preventDefault();
 
         try {
-            const response = await fetch('https://exuitesa-basketball-backend.netlify.app/.netlify/functions/login', {
+            const response = await fetch('http://localhost:4000/.netlify/functions/login', {
                 method: 'POST',
                 headers: { 'Content-type': 'application/json' },
                 body: JSON.stringify({ username: userName, password })
