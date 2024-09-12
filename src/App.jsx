@@ -24,16 +24,16 @@ function App() {
           <Route path='/admin-home' element={<AdminHome />} />
         </Route>
 
-        <Route path='/admin/CreateTeam' element={<ProtectedRoute />}>
-          <Route path="/admin/CreateTeam" element={<CreateTeam />} />
+        <Route path='/admin-home/CreateTeam' element={<ProtectedRoute />}>
+          <Route path="/admin-home/CreateTeam" element={<CreateTeam />} />
         </Route>
 
-        <Route path='/admin/CreatePlayer' element={<ProtectedRoute />}>
-          <Route path="/admin/CreatePlayer" element={<CreatePlayer />} />
+        <Route path='/admin-home/CreatePlayer' element={<ProtectedRoute />}>
+          <Route path="/admin-home/CreatePlayer" element={<CreatePlayer />} />
         </Route>
 
-        <Route path='/admin/CreateMatch' element={<ProtectedRoute />}>
-          <Route path="/admin/CreateMatch" element={<CreateMatch />} />
+        <Route path='/admin-home/CreateMatch' element={<ProtectedRoute />}>
+          <Route path="/admin-home/CreateMatch" element={<CreateMatch />} />
         </Route>
 
         <Route path="/GeneralStats" element={<GeneralStats />} />

@@ -25,9 +25,9 @@ import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 
 const navigation = [
   { name: 'Dashboard', href: '/admin-home', icon: HomeIcon, current: false },
-  { name: 'Equipos', href: '/admin/CreateTeam',icon: UsersIcon, current: false },
-  { name: 'Jugadores',  href: '/admin/CreatePlayer',icon: FolderIcon, current: false },
-  { name: 'Juegos', href: '/admin/CreateMatch',icon: CalendarIcon, current: false },
+  { name: 'Equipos', href: '/admin-home/CreateTeam',icon: UsersIcon, current: false },
+  { name: 'Jugadores',  href: '/admin-home/CreatePlayer',icon: FolderIcon, current: false },
+  { name: 'Partidos', href: '/admin-home/CreateMatch',icon: CalendarIcon, current: false },
 ]
 
 function classNames(...classes) {

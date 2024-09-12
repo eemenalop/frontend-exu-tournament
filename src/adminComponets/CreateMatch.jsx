@@ -1,18 +1,35 @@
+
+import { useEffect, useState } from "react"
 import AdminSideBar from "./AdminSidebar"
 
-const people = [
-  { name: 'Lindsay Walton', title: 'Front-end Developer', email: 'lindsay.walton@example.com', role: 'Member' },
-  // More people...
-]
-
 export default function CreateMatch() {
+  const [matches, setMatches] = useState([]);
+
+  useEffect(() => {
+    const fetchMatch = async () => {
+      try {
+        const response = await fetch('http://localhost:4000/.netlify/functions/getAllMatches');
+        if (!response.ok) {
+          throw new Error('Error fetching Matches');
+        }
+        const data = await response.json();
+        setMatches(data);
+      } catch (error) {
+        console.error('Error fetching Matches:', error);
+      }
+    }
+    fetchMatch()
+  })
+  
+
+
   return (
     <>
       <AdminSideBar/>
     <div className="px-4 sm:px-6 lg:px-8">
       <div className="sm:flex sm:items-center">
         <div className="sm:flex-auto">
-          <h1 className="text-base font-semibold leading-6 text-gray-900">Users</h1>
+          <h1 className="text-base font-semibold leading-6 text-gray-900">Partidos</h1>
           <p className="mt-2 text-sm text-gray-700">
             A list of all the users in your account including their name, title, email and role.
           </p>
@@ -34,16 +51,49 @@ export default function CreateMatch() {
                 <thead className="bg-gray-50">
                   <tr>
                     <th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
-                      Name
+                      Match ID
                     </th>
                     <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                      Title
+                      Team ID 1
                     </th>
                     <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                      Email
+                      Team 1 Name
                     </th>
                     <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                      Role
+                    Team ID 2
+                    </th>
+                    <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                    Team 2 Name
+                    </th>
+                    <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                    Score Team 1
+                    </th>
+                    <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                    Score Team 2
+                    </th>
+                    <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                    Winner
+                    </th>
+                    <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                    Loser
+                    </th>
+                    <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                    Fecha de partido
+                    </th>
+                    <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                    Modo
+                    </th>
+                    <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                    Location
+                    </th>
+                    <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                    MVP
+                    </th>
+                    <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                    Tipo de partido
+                    </th>
+                    <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                    Created At
                     </th>
                     <th scope="col" className="relative py-3.5 pl-3 pr-4 sm:pr-6">
                       <span className="sr-only">Edit</span>
@@ -51,17 +101,23 @@ export default function CreateMatch() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200 bg-white">
-                  {people.map((person) => (
-                    <tr key={person.email}>
-                      <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                        {person.name}
-                      </td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{person.title}</td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{person.email}</td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{person.role}</td>
+                  {matches.map((match) => (
+                    <tr key={match.match_id}>
+                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{match.team1_id}</td>
+                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{match.team2_id}</td>
+                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{match.score_team1}</td>
+                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{match.score_team2}</td>
+                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{match.winner}</td>
+                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{match.loser}</td>
+                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{match.match_date_time}</td>
+                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{match.mode}</td>
+                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{match.location}</td>
+                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{match.match_mvp}</td>
+                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{match.match_type}</td>
+                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{match.created_at}</td>
                       <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                         <a href="#" className="text-indigo-600 hover:text-indigo-900">
-                          Edit<span className="sr-only">, {person.name}</span>
+                          Edit<span className="sr-only"></span>
                         </a>
                       </td>
                     </tr>
