@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react"
 import AdminSideBar from "./AdminSidebar"
+import AddPlayerModal from '../adminComponets/modalsToCreate/AddPlayerModal'
 
 
 export default function CreatePlayer() {
   const [players, setPlayers] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const fetchPlayers = async () => {
@@ -19,7 +21,15 @@ export default function CreatePlayer() {
       }
     }
     fetchPlayers();
-  },[])
+  }, [])
+  
+  const handleAddPlayer = () => {
+    setIsModalOpen(true);
+  }
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  }
 
   return (
     <>
@@ -33,7 +43,8 @@ export default function CreatePlayer() {
           <button
             type="button"
             className="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-          >
+            onClick={handleAddPlayer}
+            >
             + Add Player
           </button>
         </div>
@@ -101,6 +112,7 @@ export default function CreatePlayer() {
           </div>
         </div>
       </div>
+      {isModalOpen && <AddPlayerModal onClose={handleCloseModal} />}
     </>
   )
 }

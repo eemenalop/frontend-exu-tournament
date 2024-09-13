@@ -1,9 +1,11 @@
 import AdminSideBar from "./AdminSidebar"
 import { useEffect, useState } from "react"
+import AddTeamModal from './modalsToCreate/AddTeamModal'
 
 export default function CreateTeam() {
 
   const [teams, setTeams] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   
   useEffect(() => {
     const fetchTeams = async () => {
@@ -19,8 +21,17 @@ export default function CreateTeam() {
         console.error('Error fetching stats:', error);
       }
     };
+    
     fetchTeams();
   }, [])
+
+  const handleAddTeam = () => {
+    setIsModalOpen(true);
+  }
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  }
   return (
     <>
       <AdminSideBar/>
@@ -33,7 +44,8 @@ export default function CreateTeam() {
           <button
             type="button"
             className="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-          >
+            onClick={handleAddTeam}
+            >
             + Add Team
           </button>
         </div>
@@ -87,7 +99,8 @@ export default function CreateTeam() {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+      {isModalOpen && <AddTeamModal onClose={handleCloseModal} />}
     </>
   )
 }

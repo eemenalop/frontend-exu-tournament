@@ -4,7 +4,7 @@ import MatchTypeFilter from "../statistics/MatchTypeFilter"
 
 // eslint-disable-next-line react/prop-types
 export const PlayerProfile = ({playerId }) => {
-    const [playerInfo, setPlayerInfo] = useState(null);
+    const [playerInfo, setPlayerInfo] = useState({});
     const [matchType, setMatchType] = useState('Regular');
 
     useEffect(()=>{
@@ -19,10 +19,13 @@ export const PlayerProfile = ({playerId }) => {
                 const data = await response.json();
                 if (data.length > 0) {
                     setPlayerInfo(data[0])
+                } else {
+                    setPlayerInfo({})
                 }
                 
             } catch (error) {
                 console.error('Error fetching stats:', error);
+                setPlayerInfo({})
             }
 
         }
