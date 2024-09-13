@@ -20,7 +20,7 @@ export default function CreateTeam() {
       }
     };
     fetchTeams();
-  })
+  }, [])
   return (
     <>
       <AdminSideBar/>

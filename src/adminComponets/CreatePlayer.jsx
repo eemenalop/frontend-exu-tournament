@@ -19,7 +19,7 @@ export default function CreatePlayer() {
       }
     }
     fetchPlayers();
-  })
+  },[])
 
   return (
     <>
