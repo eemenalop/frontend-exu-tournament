@@ -1,72 +1,77 @@
 import { useState, useEffect } from 'react';
-import { supabase } from '../supabaseClient';
-import { teamLogos } from '../teamLogos';
+
+const teamLogos = {
+  1: 'images/teams_logos/popiwa_logo_1.png',
+  2: 'images/teams_logos/lomaetro_logo_1.png',
+  3: 'images/teams_logos/loudest_togo_1.png',
+  4: 'images/teams_logos/toons_logo_1.png'
+};
 
 function Standing() {
   const [standings, setStandings] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const { data: matches, error: matchesError } = await supabase
-        .from('matches')
-        .select('*');
+      try {
+        // Fetch matches data
+        const matchesResponse = await fetch('http://localhost:4000/.netlify/functions/getAllMatches?match_type=Regular');
+        const matches = await matchesResponse.json();
 
-      if (matchesError) {
-        console.error('Error fetching matches:', matchesError);
-        return;
+        // Fetch teams data
+        const teamsResponse = await fetch('http://localhost:4000/.netlify/functions/getAllTeams?');
+        const teams = await teamsResponse.json();
+
+        const teamNameMap = {};
+        teams.forEach((team) => {
+          teamNameMap[team.team_id] = team.team_name;
+        });
+
+        const standingsMap = {};
+
+        matches.forEach((match) => {
+          const { team1_id, team2_id, score_team1, score_team2 } = match;
+          const team1_name = teamNameMap[team1_id];
+          const team2_name = teamNameMap[team2_id];
+
+          if (!standingsMap[team1_id]) {
+            standingsMap[team1_id] = { equipo: team1_id, name: team1_name, JJ: 0, JG: 0, JP: 0, '+/-': 0, puntos: 0 };
+          }
+          if (!standingsMap[team2_id]) {
+            standingsMap[team2_id] = { equipo: team2_id, name: team2_name, JJ: 0, JG: 0, JP: 0, '+/-': 0, puntos: 0 };
+          }
+
+          standingsMap[team1_id].JJ += 1;
+          standingsMap[team1_id]['+/-'] += score_team1 - score_team2;
+
+          standingsMap[team2_id].JJ += 1;
+          standingsMap[team2_id]['+/-'] += score_team2 - score_team1;
+
+          if (score_team1 > score_team2) {
+            standingsMap[team1_id].JG += 1;
+            standingsMap[team1_id].puntos += 2; // Ganar 2 puntos
+            standingsMap[team2_id].JP += 1;
+            standingsMap[team2_id].puntos += 1; // Perder 1 punto
+          } else if (score_team2 > score_team1) {
+            standingsMap[team2_id].JG += 1;
+            standingsMap[team2_id].puntos += 2; // Ganar 2 puntos
+            standingsMap[team1_id].JP += 1;
+            standingsMap[team1_id].puntos += 1; // Perder 1 punto
+          }
+        });
+        
+        const sortedStandings = Object.values(standingsMap).sort((a, b) => b.puntos - a.puntos);
+        setStandings(sortedStandings);
+      } catch (error) {
+        console.error('Error fetching data:', error);
       }
-
-      const { data: teams, error: teamsError } = await supabase
-        .from('teams')
-        .select('*');
-
-      if (teamsError) {
-        console.error('Error fetching teams:', teamsError);
-        return;
-      }
-
-      const teamNameMap = {};
-      teams.forEach((team) => {
-        teamNameMap[team.team_id] = team.team_name;
-      });
-
-      const standingsMap = {};
-
-      matches.forEach((match) => {
-        const { team1_id, team2_id, score_team1, score_team2 } = match;
-        const team1_name = teamNameMap[team1_id];
-        const team2_name = teamNameMap[team2_id];
-
-        if (!standingsMap[team1_id]) {
-          standingsMap[team1_id] = { equipo: team1_id, name: team1_name, JJ: 0, JG: 0, JP: 0, '+/-': 0 };
-        }
-        standingsMap[team1_id].JJ += 1;
-        standingsMap[team1_id]['+/-'] += score_team1 - score_team2;
-
-        if (!standingsMap[team2_id]) {
-          standingsMap[team2_id] = { equipo: team2_id, name: team2_name, JJ: 0, JG: 0, JP: 0, '+/-': 0 };
-        }
-        standingsMap[team2_id].JJ += 1;
-        standingsMap[team2_id]['+/-'] += score_team2 - score_team1;
-
-        if (score_team1 > score_team2) {
-          standingsMap[team1_id].JG += 1;
-          standingsMap[team2_id].JP += 1;
-        } else if (score_team2 > score_team1) {
-          standingsMap[team2_id].JG += 1;
-          standingsMap[team1_id].JP += 1;
-        }
-      });
-
-      setStandings(Object.values(standingsMap));
+      
     };
 
     fetchData();
   }, []);
 
   const getTeamLogo = (teamId) => {
-    const team = teamLogos.find(t => t.id === teamId);
-    return team ? team.logo : '';
+    return teamLogos[teamId] || '';
   };
 
   return (
@@ -76,9 +81,10 @@ function Standing() {
           <thead>
             <tr>
               <th className="py-2 px-4 border-b text-center">Equipo</th>
-              <th className="py-2 px-4 border-b text-center">JJ</th>
-              <th className="py-2 px-4 border-b text-center">JG</th>
-              <th className="py-2 px-4 border-b text-center">JP</th>
+              <th className="py-2 px-4 border-b text-center">PJ</th>
+              <th className="py-2 px-4 border-b text-center">G</th>
+              <th className="py-2 px-4 border-b text-center">P</th>
+              <th className="py-2 px-4 border-b text-center">PTS</th>
               <th className="py-2 px-4 border-b text-center">+/-</th>
             </tr>
           </thead>
@@ -100,6 +106,7 @@ function Standing() {
                 <td className="py-2 px-4 border-b text-center">{item.JJ}</td>
                 <td className="py-2 px-4 border-b text-center">{item.JG}</td>
                 <td className="py-2 px-4 border-b text-center">{item.JP}</td>
+                <td className="py-2 px-4 border-b text-center">{item.puntos}</td>
                 <td className="py-2 px-4 border-b text-center">{item['+/-']}</td>
               </tr>
             ))}

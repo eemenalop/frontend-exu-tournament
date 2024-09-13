@@ -1,15 +1,17 @@
 import NavBar from './NavBar.jsx';
-import Logos from './Logos.jsx';
 import Standing from './Standings.jsx';
 import Footer from './Footer.jsx';
 import Carousel from './Corousel.jsx'
+import CalendarImg from  './CalendarImg.jsx'
+import LogosCloud from './LogosCloud.jsx'
 
 function Home() {
   return (
     <>
       <NavBar />
       <Carousel/>
-      <Logos />
+      <LogosCloud />
+      <CalendarImg/>
       <Standing />
       <Footer />
     </>

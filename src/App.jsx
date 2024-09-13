@@ -10,6 +10,7 @@ import AdminHome from './adminComponets/AdminSidebar';
 import CreateTeam from './adminComponets/CreateTeam';
 import CreatePlayer from './adminComponets/CreatePlayer';
 import CreateMatch from './adminComponets/CreateMatch';
+import CalendarDetail from './componets/CalendarDetail';
 
 
 function App() {
@@ -35,6 +36,8 @@ function App() {
         <Route path='/admin-home/CreateMatch' element={<ProtectedRoute />}>
           <Route path="/admin-home/CreateMatch" element={<CreateMatch />} />
         </Route>
+
+        <Route path="/CalendarDetail" element={<CalendarDetail />} />
 
         <Route path="/GeneralStats" element={<GeneralStats />} />
         
