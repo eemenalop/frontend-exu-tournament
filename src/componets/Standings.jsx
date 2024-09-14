@@ -14,11 +14,11 @@ function Standing() {
     const fetchData = async () => {
       try {
         // Fetch matches data
-        const matchesResponse = await fetch('http://localhost:4000/.netlify/functions/getAllMatches?match_type=Regular');
+        const matchesResponse = await fetch('https://exuitesa-basketball.netlify.app/.netlify/functions/getAllMatches?match_type=Regular');
         const matches = await matchesResponse.json();
 
         // Fetch teams data
-        const teamsResponse = await fetch('http://localhost:4000/.netlify/functions/getAllTeams?');
+        const teamsResponse = await fetch('https://exuitesa-basketball.netlify.app/.netlify/functions/getAllTeams?');
         const teams = await teamsResponse.json();
 
         const teamNameMap = {};

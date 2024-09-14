@@ -10,7 +10,7 @@ export default function CreatePlayer() {
   useEffect(() => {
     const fetchPlayers = async () => {
       try {
-        const response = await fetch('http://localhost:4000/.netlify/functions/getAllPlayers');
+        const response = await fetch('https://exuitesa-basketball.netlify.app/.netlify/functions/getAllPlayers');
         if (!response.ok) {
           throw new Error('Error fetching Players');
         }

@@ -8,7 +8,7 @@ export default function CreateMatch() {
   useEffect(() => {
     const fetchMatch = async () => {
       try {
-        const response = await fetch('http://localhost:4000/.netlify/functions/getAllMatches');
+        const response = await fetch('https://exuitesa-basketball.netlify.app/.netlify/functions/getAllMatches');
         if (!response.ok) {
           throw new Error('Error fetching Matches');
         }

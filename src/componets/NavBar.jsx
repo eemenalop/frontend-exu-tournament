@@ -23,7 +23,7 @@ export default function Navbar() {
 
     useEffect(() => {
         const loadTeams = async () => {
-            const response = await fetch(`http://localhost:4000/.netlify/functions/getAllTeams`)
+            const response = await fetch(`https://exuitesa-basketball.netlify.app/.netlify/functions/getAllTeams`)
             if(!response.ok){
                 throw new Error ('Error fetching player stats');
             }

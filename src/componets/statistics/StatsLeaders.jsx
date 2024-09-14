@@ -8,7 +8,7 @@ const StatsLeaders = ({ matchType, statType }) => {
     useEffect(() => {
         const fetchStats = async () => {
             try {
-                const response = await fetch(`http://localhost:4000/.netlify/functions/getTopPlayerStats?match_type=${matchType}&stat_type=${statType}`
+                const response = await fetch(`https://exuitesa-basketball.netlify.app/.netlify/functions/getTopPlayerStats?match_type=${matchType}&stat_type=${statType}`
                 );
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);

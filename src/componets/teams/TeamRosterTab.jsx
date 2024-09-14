@@ -8,7 +8,7 @@ export default function TeamRosterTab({teamId}) {
 
   const fetchPlayers = async (teamId) =>{
     try {
-      const response = await fetch(`http://localhost:4000/.netlify/functions/getAllPlayers?team_id=${teamId}`)
+      const response = await fetch(`https://exuitesa-basketball.netlify.app/.netlify/functions/getAllPlayers?team_id=${teamId}`)
       const data = await response.json()
       setPlayers(data)
     } catch (error) {

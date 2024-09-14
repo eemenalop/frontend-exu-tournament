@@ -14,7 +14,7 @@ export default function AddTeamModal({ onClose }) {
     };
 
     try {
-      const response = await fetch('http://localhost:4000/.netlify/functions/createTeam', {
+      const response = await fetch('https://exuitesa-basketball.netlify.app/.netlify/functions/createTeam', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
