@@ -18,7 +18,7 @@ function Standing() {
         const matches = await matchesResponse.json();
 
         // Fetch teams data
-        const teamsResponse = await fetch('https://exuitesa-basketball.netlify.app/.netlify/functions/getAllTeams?');
+        const teamsResponse = await fetch('https://exuitesa-basketball.netlify.app/.netlify/functions/getAllTeams');
         const teams = await teamsResponse.json();
 
         const teamNameMap = {};
