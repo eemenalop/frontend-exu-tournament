@@ -56,28 +56,28 @@ export const PlayerProfile = ({playerId }) => {
                     <img
                         src={playerInfo.player_photo} // Cambia este valor por la URL de la foto del jugador
                         alt={playerInfo.player_name}
-                        className="w-64 h-64 rounded-full mb-4 object-contain"
+                        className="w-64 h-64 rounded-full mb-4 object-cover"
                     />
-                    <div className="text-white text-2xl font-bold">
+                    <div className="text-gray-800 text-2xl font-bold">
                         {playerInfo.player_name}
                     </div>
                 </div>
 
                 {/* Second column: Player stats */}
                 <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-gray-800 text-white p-4 rounded-lg text-center">
+                    <div className="bg-red-800 text-white p-4 rounded-lg text-center">
                         <div className="text-sm">Puntos por juego</div>
                         <div className="text-xl font-bold">{roundValue(playerInfo.points)}</div>
                     </div>
-                    <div className="bg-gray-800 text-white p-4 rounded-lg text-center">
+                    <div className="bg-red-800 text-white p-4 rounded-lg text-center">
                         <div className="text-sm">Rebotes por juego</div>
                         <div className="text-xl font-bold">{roundValue(playerInfo.rebounds)}</div>
                     </div>
-                    <div className="bg-gray-800 text-white p-4 rounded-lg text-center">
+                    <div className="bg-red-800 text-white p-4 rounded-lg text-center">
                         <div className="text-sm">Asistencias por juego</div>
                         <div className="text-xl font-bold">{roundValue(playerInfo.assists)}</div>
                     </div>
-                    <div className="bg-gray-800 text-white p-4 rounded-lg text-center">
+                    <div className="bg-red-800 text-white p-4 rounded-lg text-center">
                         <div className="text-sm">PRA</div>
                         <div className="text-xl font-bold">{roundValue(playerInfo.pra)}</div>
                     </div>
@@ -98,55 +98,55 @@ export const PlayerProfile = ({playerId }) => {
                         <table className="min-w-full divide-y divide-gray-300">
                         <thead className="bg-gray-50">
                             <tr>
-                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-red-700">
                                 Juegos
                             </th>
-                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-red-700">
                                 PTS
                             </th>
-                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-red-700">
                                 REB
                             </th>
-                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-red-700">
                                 AST
                             </th>
-                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-red-700">
                                 STL
                             </th>
-                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-red-700">
                                 BLK
                             </th>
-                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-red-700">
                                 TOV
                             </th>
-                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-red-700">
                                 FGM
                             </th>
-                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-red-700">
                                 FGA
                             </th>
-                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-red-700">
                                 FG%
                             </th>
-                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-red-700">
                                 3PTM
                             </th>
-                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-red-700">
                                 3PTA
                             </th>
-                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-red-700">
                                 3PT%
                             </th>
-                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-red-700">
                                 FTM
                             </th>
-                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-red-700">
                                 FTA
                             </th>
-                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-red-700">
                                 FT%
                             </th>
-                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-red-700">
                                 PRA
                             </th>
                             </tr>

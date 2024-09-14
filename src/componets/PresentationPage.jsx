@@ -10,6 +10,13 @@ const PresentationPage = ({ teamId }) => {
         4: '/images/teamPage_Banners/playerandteam_banner_toons.png'
     }
 
+    /*const movilImages = {
+        1:'',
+        2:'',
+        3:'public/images/teamPage_Banners/BANNER_backgorund_movil_loudest.png',
+        4:'',
+    }*/
+
     const imageURL = images[teamId]
 
     if (!imageURL) {

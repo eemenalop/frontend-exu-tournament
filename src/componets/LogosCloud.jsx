@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function LogosCloud() {
     return (
-      <div className="bg-white py-24 sm:py-32">
+      <div className="bg-gray-50 py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <h2 className="text-center text-3xl md:text-4xl lg:text-6xl font-semibold leading-8 text-gray-900 font">
             Nuestros Equipos

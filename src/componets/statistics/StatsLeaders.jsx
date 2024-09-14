@@ -33,7 +33,7 @@ const StatsLeaders = ({ matchType, statType }) => {
             <ul className="space-y-1">
                 {stats.map((player, index) => (
                     <li key={index} className="flex items-center p-3 h-10 bg-gray-100 rounded-lg shadow-sm hover:bg-gray-300 transition duration-300 ease-in-out">
-                        <span className="w-6 h-6 flex items-center justify-center text-sm font-semibold text-white bg-blue-500 rounded-full mr-2">
+                        <span className="w-6 h-6 flex items-center justify-center text-sm font-semibold text-white bg-red-700 rounded-full mr-2">
                             {player.rank}
                         </span>
                         <div className='flex-grow'>

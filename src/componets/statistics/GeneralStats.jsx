@@ -16,7 +16,7 @@ const GeneralStats = () => {
                 imageURL='https://ulznkxovycorqeblrjxk.supabase.co/storage/v1/object/public/PresentationPage%20Images/basketball-game-concept.webp?t=2024-09-02T17%3A13%3A10.428Z'
                 alt='Stats component Image' />
             <div className='px-4 py-6'>
-                <h2 className='text-2xl font-semibold mb-4 text-white'>
+                <h2 className='text-2xl font-semibold mb-4 text-gray-800'>
                     Top Players
                 </h2>
                 <div className='flex justify-end mb-11'>

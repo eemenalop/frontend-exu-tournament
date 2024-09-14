@@ -110,6 +110,7 @@ export default function AdminSideBar() {
                         Settings
                       </a>
                     </li>
+                    <li></li>
                   </ul>
                 </nav>
               </div>
@@ -151,6 +152,19 @@ export default function AdminSideBar() {
                   </ul>
                 </li>
                 <li>
+                </li>
+                <li>
+                  <Link
+                  to={'/'}
+                  >
+                  <button
+                    href="#"
+                    className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-400 hover:bg-gray-800 hover:text-white"
+                  >
+                    <Cog6ToothIcon aria-hidden="true" className="h-6 w-6 shrink-0" />
+                    Back Home
+                  </button>
+                  </Link>
                 </li>
                 <li className="mt-auto">
                   <a

@@ -1,17 +1,16 @@
 import Home from './componets/Home';
-import LogIn from './adminComponets/LogIn';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import ProtectedRoute from './adminComponets/ProtectedRoute';
 import GeneralStats from './componets/statistics/GeneralStats';
 import Team from './componets/teams/Team';
 import Player from './componets/players/Player';
 import History from './componets/History';
-import AdminHome from './adminComponets/AdminSidebar';
-import CreateTeam from './adminComponets/CreateTeam';
-import CreatePlayer from './adminComponets/CreatePlayer';
-import CreateMatch from './adminComponets/CreateMatch';
 import CalendarDetail from './componets/CalendarDetail';
-
+import LogIn from './adminComponets/LogIn';
+import ProtectedRoute from './adminComponets/ProtectedRoute'
+import AdminHome from './adminComponets/AdminHome';
+import CreateTeam from './adminComponets/CreateTeam'
+import CreatePlayer from './adminComponets/CreatePlayer'
+import CreateMatch from './adminComponets/CreateMatch'
 
 function App() {
   return (
@@ -20,9 +19,8 @@ function App() {
         <Route path='/' element={<Home />} />
 
         <Route path='/admin-login' element={<LogIn />} />
-
         <Route path='/admin-home' element={<ProtectedRoute />}>
-          <Route path='/admin-home' element={<AdminHome />} />
+            <Route path='/admin-home' element={<AdminHome />} />
         </Route>
 
         <Route path='/admin-home/CreateTeam' element={<ProtectedRoute />}>
@@ -36,6 +34,7 @@ function App() {
         <Route path='/admin-home/CreateMatch' element={<ProtectedRoute />}>
           <Route path="/admin-home/CreateMatch" element={<CreateMatch />} />
         </Route>
+        
 
         <Route path="/CalendarDetail" element={<CalendarDetail />} />
 

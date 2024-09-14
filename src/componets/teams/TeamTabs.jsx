@@ -31,7 +31,7 @@ export default function TeamTabs({ teamId }) {
                 onClick={() => setSelectedTab(tab.key)}
                 className={classNames(
                   selectedTab === tab.key
-                    ? 'border-indigo-500 text-indigo-600'
+                    ? 'border-red-700 text-red-700'
                     : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700',
                   'group inline-flex items-center border-b-2 px-4 py-3 text-xs sm:text-sm font-medium flex-1 sm:flex-grow-0 min-w-[150px]', // Ajuste para que todas tengan el mismo tamaño
                 )}
@@ -40,8 +40,8 @@ export default function TeamTabs({ teamId }) {
                   aria-hidden="true"
                   className={classNames(
                     selectedTab === tab.key
-                      ? 'text-indigo-500'
-                      : 'text-gray-400 group-hover:text-gray-500',
+                      ? 'text-red-700'
+                      : 'text-gray-600 group-hover:text-red-700',
                     '-ml-0.5 mr-2 h-4 w-4 sm:h-5 sm:w-5',
                   )}
                 />

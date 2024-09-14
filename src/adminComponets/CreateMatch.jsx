@@ -26,15 +26,16 @@ export default function CreateMatch() {
   return (
     <>
       <AdminSideBar/>
-    <div className="px-4 sm:px-6 lg:px-8">
+    <div className="lg:pl-80 px-4 sm:px-6 lg:px-8">
       <div className="sm:flex sm:items-center">
         <div className="sm:flex-auto">
           <h1 className="text-base font-semibold leading-6 text-gray-900">Partidos</h1>
           <p className="mt-2 text-sm text-gray-700">
-            A list of all the users in your account including their name, title, email and role.
+            Listado de todos los partidos creados.
           </p>
         </div>
         <div className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
+          
           <button
             type="button"
             className="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
@@ -103,8 +104,11 @@ export default function CreateMatch() {
                 <tbody className="divide-y divide-gray-200 bg-white">
                   {matches.map((match) => (
                     <tr key={match.match_id}>
+                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{match.match_id}</td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{match.team1_id}</td>
+                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{match.team1.team_name}</td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{match.team2_id}</td>
+                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{match.team2.team_name}</td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{match.score_team1}</td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{match.score_team2}</td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{match.winner}</td>

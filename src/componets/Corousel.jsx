@@ -28,12 +28,12 @@ export default function HomeCarousel() {
       <div className="block sm:hidden h-96 xl:h-80 2xl:h-[400px]">
         <Carousel pauseOnHover slideInterval={2500} className="transition-all duration-700 ease-in-out">
           <img
-            src="images/Home-Banners/banner_1_exuitesa_movil.png"
+            src="/images/Home-Banners/banner_movil_exuitesa_1.png"
             alt="Mobile Image 1"
             className="w-full h-full object-cover transition-transform duration-700 ease-in-out"
           />
           <img
-            src="images/Home-Banners/banner_2_campeones_popiwa_movil.png"
+            src="/images/Home-Banners/banner movil_popiwa_campeones_2.png"
             alt="Mobile Image 2"
             className="w-full h-full object-cover transition-transform duration-700 ease-in-out"
           />

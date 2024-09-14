@@ -34,10 +34,13 @@ export default function CreatePlayer() {
   return (
     <>
       <AdminSideBar/>
-    <div className="px-4 sm:px-6 lg:px-8">
+    <div className="lg:pl-80 px-4 sm:px-6 lg:px-8">
       <div className="sm:flex sm:items-center">
         <div className="sm:flex-auto">
           <h1 className="text-base font-semibold leading-6 text-white">Jugadores</h1>
+          <p className="mt-2 text-sm text-gray-700">
+            Listado de todos los Jugadores creados.
+          </p>
         </div>
         <div className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
           <button
@@ -74,10 +77,10 @@ export default function CreatePlayer() {
                     <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
                       Number
                     </th>
-                    <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                    <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 max-w-24">
                       Created At
                     </th>
-                    <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                    <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 max-w-24">
                       Player Photo
                     </th>
                     <th scope="col" className="relative py-3.5 pl-3 pr-4 sm:pr-6">
@@ -96,8 +99,8 @@ export default function CreatePlayer() {
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{player.player_name}</td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{player.position}</td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{player.number}</td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{player.created_at}</td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500 max-w-xs truncate">{player.player_photo}</td>
+                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500 max-w-24 truncate">{player.created_at}</td>
+                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500 max-w-24 truncate">{player.player_photo}</td>
                       <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                         <a href="#" className="text-indigo-600 hover:text-indigo-900">
                           Edit<span className="sr-only"></span>
