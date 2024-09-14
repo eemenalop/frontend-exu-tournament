@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import Footer from '../Footer';
 import Navbar from '../NavBar';
-import PresentationPage from '../PresentationPage'
 import StatsLeaders from './StatsLeaders';
 import MatchTypeFilter from './MatchTypeFilter';
 
@@ -12,9 +11,9 @@ const GeneralStats = () => {
     return (
         <>
             <Navbar />
-            <PresentationPage
-                imageURL='images/Home-Banners/basketball-game-concept.png'
-                alt='Stats component Image' />
+            <div>
+                <img src="images/Home-Banners/basketball-game-concept.png" alt='Stats component Image'/>
+                </div>
             <div className='px-4 py-6'>
                 <h2 className='text-2xl font-semibold mb-4 text-gray-800'>
                     Top Players
