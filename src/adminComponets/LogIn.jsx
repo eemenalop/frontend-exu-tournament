@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { BACKEND_URL } from "../enviroment";
 
 function LogIn() {
 
@@ -12,7 +13,7 @@ function LogIn() {
         event.preventDefault();
 
         try {
-            const response = await fetch('https://exuitesa-basketball.netlify.app/.netlify/functions/login', {
+            const response = await fetch(`${BACKEND_URL}/.netlify/functions/login`, {
                 method: 'POST',
                 headers: { 'Content-type': 'application/json' },
                 body: JSON.stringify({ username: userName, password })

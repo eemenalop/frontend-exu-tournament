@@ -1,6 +1,7 @@
 import AdminSideBar from "./AdminSidebar"
 import { useEffect, useState } from "react"
 import AddTeamModal from './modalsToCreate/AddTeamModal'
+import { BACKEND_URL } from "../enviroment";
 
 export default function CreateTeam() {
 
@@ -10,7 +11,7 @@ export default function CreateTeam() {
   useEffect(() => {
     const fetchTeams = async () => {
       try {
-        const response = await fetch('https://exuitesa-basketball.netlify.app/.netlify/functions/getAllTeams')
+        const response = await fetch(`${BACKEND_URL}/.netlify/functions/getAllTeams`)
         if (!response.ok) {
           throw new Error('Error fetching Teams')
         }

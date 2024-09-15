@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import AdminSideBar from "./AdminSidebar"
 import AddPlayerModal from '../adminComponets/modalsToCreate/AddPlayerModal'
+import { BACKEND_URL } from "../enviroment";
 
 
 export default function CreatePlayer() {
@@ -10,7 +11,7 @@ export default function CreatePlayer() {
   useEffect(() => {
     const fetchPlayers = async () => {
       try {
-        const response = await fetch('https://exuitesa-basketball.netlify.app/.netlify/functions/getAllPlayers');
+        const response = await fetch(`${BACKEND_URL}/.netlify/functions/getAllPlayers`);
         if (!response.ok) {
           throw new Error('Error fetching Players');
         }

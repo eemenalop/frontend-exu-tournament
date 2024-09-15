@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from "react"
 import AdminSideBar from "./AdminSidebar"
+import { BACKEND_URL } from "../enviroment";
 
 export default function CreateMatch() {
   const [matches, setMatches] = useState([]);
@@ -8,7 +9,7 @@ export default function CreateMatch() {
   useEffect(() => {
     const fetchMatch = async () => {
       try {
-        const response = await fetch('https://exuitesa-basketball.netlify.app/.netlify/functions/getAllMatches');
+        const response = await fetch(`${BACKEND_URL}/.netlify/functions/getAllMatches`);
         if (!response.ok) {
           throw new Error('Error fetching Matches');
         }
