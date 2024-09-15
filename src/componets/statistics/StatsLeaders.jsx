@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { BACKEND_URL } from '../../enviroment';
 
 const StatsLeaders = ({ matchType, statType }) => {
     const [stats, setStats] = useState([]);
@@ -8,7 +9,7 @@ const StatsLeaders = ({ matchType, statType }) => {
     useEffect(() => {
         const fetchStats = async () => {
             try {
-                const response = await fetch(`https://exuitesa-basketball.netlify.app/.netlify/functions/getTopPlayerStats?match_type=${matchType}&stat_type=${statType}`
+                const response = await fetch(`${BACKEND_URL}/.netlify/functions/getTopPlayerStats?match_type=${matchType}&stat_type=${statType}`
                 );
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);

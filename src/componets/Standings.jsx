@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { BACKEND_URL } from '../enviroment';
 
 const teamLogos = {
   1: 'images/teams_logos/popiwa_logo_1.png',
@@ -14,11 +15,11 @@ function Standing() {
     const fetchData = async () => {
       try {
         // Fetch matches data
-        const matchesResponse = await fetch('https://exuitesa-basketball.netlify.app/.netlify/functions/getAllMatches?match_type=Regular');
+        const matchesResponse = await fetch(`${BACKEND_URL}/.netlify/functions/getAllMatches?match_type=Regular`);
         const matches = await matchesResponse.json();
 
         // Fetch teams data
-        const teamsResponse = await fetch('https://exuitesa-basketball.netlify.app/.netlify/functions/getAllTeams');
+        const teamsResponse = await fetch(`${BACKEND_URL}/.netlify/functions/getAllMatches`);
         const teams = await teamsResponse.json();
 
         const teamNameMap = {};

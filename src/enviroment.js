@@ -1,0 +1,5 @@
+const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
+const SUPABASE_KEY = import.meta.env.VITE_SUPABASE_KEY;
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
+export {SUPABASE_URL, SUPABASE_KEY, BACKEND_URL}

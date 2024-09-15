@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom";
+import { BACKEND_URL } from "../../enviroment";
 
 // eslint-disable-next-line react/prop-types
 export default function TeamRosterTab({teamId}) {
@@ -8,7 +9,7 @@ export default function TeamRosterTab({teamId}) {
 
   const fetchPlayers = async (teamId) =>{
     try {
-      const response = await fetch(`https://exuitesa-basketball.netlify.app/.netlify/functions/getAllPlayers?team_id=${teamId}`)
+      const response = await fetch(`${BACKEND_URL}/.netlify/functions/getAllPlayers?team_id=${teamId}`)
       const data = await response.json()
       setPlayers(data)
     } catch (error) {

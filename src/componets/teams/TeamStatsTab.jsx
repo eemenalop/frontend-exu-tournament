@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import MatchTypeFilter from "../statistics/MatchTypeFilter";
 import { Link } from "react-router-dom";
+import { BACKEND_URL } from "../../enviroment";
 
   
   // eslint-disable-next-line react/prop-types
@@ -12,7 +13,7 @@ import { Link } from "react-router-dom";
       useEffect(() =>{
         async function fetchPlayerStats() {
           try {
-            const response = await fetch(`https://exuitesa-basketball.netlify.app/.netlify/functions/getStatsPerGame?match_type=${matchType}&team_id=${teamId}`)
+            const response = await fetch(`${BACKEND_URL}/.netlify/functions/getStatsPerGame?match_type=${matchType}&team_id=${teamId}`)
             if(!response.ok){
               throw new Error ('Error fetching player stats');
             }

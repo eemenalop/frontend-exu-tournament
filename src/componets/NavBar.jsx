@@ -3,6 +3,7 @@ import { Disclosure, DisclosureButton, Dialog, DialogBackdrop, DialogPanel, Tran
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Link } from 'react-router-dom'
 import { socialNavigation } from '../socialNavigation.jsx'
+import { BACKEND_URL } from '../enviroment.js'
 
 const navigation = [
     { name: 'Inicio', href: '/', current: false },
@@ -23,7 +24,7 @@ export default function Navbar() {
 
     useEffect(() => {
         const loadTeams = async () => {
-            const response = await fetch(`https://exuitesa-basketball.netlify.app/.netlify/functions/getAllTeams`)
+            const response = await fetch(`${BACKEND_URL}/.netlify/functions/getAllTeams`)
             if(!response.ok){
                 throw new Error ('Error fetching player stats');
             }
