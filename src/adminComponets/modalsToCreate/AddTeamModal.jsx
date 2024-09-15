@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { BACKEND_URL } from "../../enviroment";
 
 // eslint-disable-next-line react/prop-types
 export default function AddTeamModal({ onClose }) {
@@ -14,7 +15,7 @@ export default function AddTeamModal({ onClose }) {
     };
 
     try {
-      const response = await fetch('https://exuitesa-basketball.netlify.app/.netlify/functions/createTeam', {
+      const response = await fetch(`${BACKEND_URL}/.netlify/functions/createTeam`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

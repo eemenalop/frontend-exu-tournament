@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { BACKEND_URL } from "../../enviroment";
 
 // eslint-disable-next-line react/prop-types
 export default function AddTeamModal({ onClose }) {
@@ -15,7 +16,7 @@ export default function AddTeamModal({ onClose }) {
   useEffect(() => {
     const fetchTeam = async () => {
       try {
-        const response = await fetch('http://localhost:4000/.netlify/functions/getAllTeams')
+        const response = await fetch(`${BACKEND_URL}/.netlify/functions/getAllTeams`)
         const data = await response.json();
         setTeams(data);
       } catch (error) {
@@ -42,7 +43,7 @@ export default function AddTeamModal({ onClose }) {
     };
 
     try {
-      const response = await fetch('http://localhost:4000/.netlify/functions/createPlayer', {
+      const response = await fetch(`${BACKEND_URL}/.netlify/functions/createPlayer`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
