@@ -2,9 +2,11 @@
 import { useEffect, useState } from "react"
 import AdminSideBar from "./AdminSidebar"
 import { BACKEND_URL } from "../enviroment";
+import AddMatchModal from "./modalsToCreate/AddMatchModal";
 
 export default function CreateMatch() {
   const [matches, setMatches] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const fetchMatch = async () => {
@@ -21,7 +23,14 @@ export default function CreateMatch() {
     }
     fetchMatch()
   },[])
-  
+
+  const handleAddMatch = () => {
+    setIsModalOpen(true);
+  }
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  }
 
 
   return (
@@ -40,7 +49,8 @@ export default function CreateMatch() {
           <button
             type="button"
             className="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-          >
+            onClick={handleAddMatch}
+            >
             + Add Match
           </button>
         </div>
@@ -133,7 +143,8 @@ export default function CreateMatch() {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+      {isModalOpen && <AddMatchModal onClose={handleCloseModal}/> }
     </>
   )
 }
