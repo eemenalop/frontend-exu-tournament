@@ -23,7 +23,6 @@ export default function TeamRosterTab({teamId}) {
     }
   }, [teamId])
 
-
     return (
       <div className="bg-gray-900 py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6 text-center lg:px-8">

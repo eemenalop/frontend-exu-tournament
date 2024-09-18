@@ -28,6 +28,7 @@ const navigation = [
   { name: 'Equipos', href: '/admin-home/CreateTeam',icon: UsersIcon, current: false },
   { name: 'Jugadores',  href: '/admin-home/CreatePlayer',icon: FolderIcon, current: false },
   { name: 'Partidos', href: '/admin-home/CreateMatch',icon: CalendarIcon, current: false },
+  { name: 'Estadisticas', href: '/admin-home/CreateMatchPlayerStat',icon: CalendarIcon, current: false },
 ]
 
 function classNames(...classes) {
