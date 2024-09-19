@@ -16,8 +16,8 @@ const AddMatchModal = ({ onClose }) => {
   });
 
   const [teams, setTeams] = useState([]);
-  const [players, setPlayers] = useState([]);
-  const [winningTeamId, setWinningTeamId] = useState([]);
+  /*const [players, setPlayers] = useState([]);
+  const [winningTeamId, setWinningTeamId] = useState('');*/
 
   useEffect(() => {
     const fetchTeam = async () => {
@@ -32,7 +32,7 @@ const AddMatchModal = ({ onClose }) => {
     fetchTeam();
   }, []);
 
-  useEffect(() => {
+  /*useEffect(() => {
     const detectWinningTeam = () => {
       if (matchData.score_team1 && matchData.score_team2) {
         if (parseInt(matchData.score_team1) > parseInt(matchData.score_team2)) {
@@ -45,22 +45,27 @@ const AddMatchModal = ({ onClose }) => {
       }
     }
     detectWinningTeam();
-  }, [matchData.score_team1, matchData.score_team2, matchData.team1_id, matchData.team2_id]);
+  }, [matchData.score_team1, matchData.score_team2, matchData.team1_id, matchData.team2_id]);*/
 
-  useEffect(() => {
+  /*useEffect(() => {
     if (winningTeamId) {
-      const fetchPlayers = async () => {
+      const fetchPlayers = async (winningTeamId) => {
         try {
           const response = await fetch(`${BACKEND_URL}/.netlify/functions/getAllPlayers?team_id=${winningTeamId}`);
+          if(!response.ok){
+            throw new Error('Error fetching players')
+          }
           const data = response.json();
           setPlayers(data);
         } catch (error) {
           console.error('Error fetching players:', error);
         }
       }
-      fetchPlayers();
+      fetchPlayers(winningTeamId);
+    }else{
+      setPlayers([]);
     }
-  }, [winningTeamId])
+  }, [winningTeamId])*/
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -246,11 +251,14 @@ const AddMatchModal = ({ onClose }) => {
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             >
               <option value="" disabled>Selecciona el MVP del partido</option>
-              {players.map((player) =>(
+              <option value="1" >1</option>
+              <option value="5" >5</option>
+              <option value="12" >12</option>
+              {/*{players.map((player) => (
                 <option key={player.player_id} value={player.player_id}>
                   {player.player_name}
                 </option>
-              ))}
+              ))}*/}
             </select>
           </div>
 
