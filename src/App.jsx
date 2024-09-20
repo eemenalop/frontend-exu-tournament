@@ -11,6 +11,8 @@ import AdminHome from './adminComponets/AdminHome';
 import CreateTeam from './adminComponets/CreateTeam'
 import CreatePlayer from './adminComponets/CreatePlayer'
 import CreateMatch from './adminComponets/CreateMatch'
+import CreatePlayersMatchStats from './adminComponets/CreatePlayersMatchStats'
+import AddStatsPage from './adminComponets/modalsToCreate/AddStatsPage'
 
 function App() {
   return (
@@ -33,6 +35,13 @@ function App() {
 
         <Route path='/admin-home/CreateMatch' element={<ProtectedRoute />}>
           <Route path="/admin-home/CreateMatch" element={<CreateMatch />} />
+        </Route>
+        
+        <Route path='/admin-home/CreatePlayersMatchStats' element={<ProtectedRoute />}>
+          <Route path="/admin-home/CreatePlayersMatchStats" element={<CreatePlayersMatchStats />} />
+        </Route>
+        <Route path='/admin-home/CreatePlayersMatchStats/AddStatsPage' element={<ProtectedRoute />}>
+          <Route path="/admin-home/CreatePlayersMatchStats/AddStatsPage" element={<AddStatsPage />} />
         </Route>
         
 

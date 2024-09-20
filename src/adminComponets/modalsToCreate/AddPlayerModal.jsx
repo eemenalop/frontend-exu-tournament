@@ -36,7 +36,6 @@ export default function AddTeamModal({ onClose }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     const newPlayer = {
       ...playerData,
       player_photo: playerData.player_photo || null,

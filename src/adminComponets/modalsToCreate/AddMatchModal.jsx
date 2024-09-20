@@ -18,6 +18,7 @@ const AddMatchModal = ({ onClose }) => {
   const [teams, setTeams] = useState([]);
   const [players, setPlayers] = useState([]);
   const [winningTeamId, setWinningTeamId] = useState('');
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const fetchTeam = async () => {
@@ -75,14 +76,28 @@ const AddMatchModal = ({ onClose }) => {
     });
   };
 
-  const handleSubmit = async () => {
+  
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const newMatch = {
+      ...matchData,
+      match_mvp: matchData.match_mvp || null,
+    };
+
+    if (matchData.score_team1 === matchData.score_team2) {
+      setError("Los puntajes de ambos equipos no pueden ser iguales.");
+      return;
+    }
+    setError("");
+
     try {
       const response = await fetch(`${BACKEND_URL}/.netlify/functions/createMatch`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(matchData),
+        body: JSON.stringify(newMatch),
       });
 
       console.log(matchData)
@@ -101,6 +116,7 @@ const AddMatchModal = ({ onClose }) => {
     <div className="fixed inset-0 flex items-center justify-center z-50 bg-gray-800 bg-opacity-75">
       <div className="bg-white rounded-lg p-6 max-w-md w-full max-h-[90vh] overflow-y-auto">
         <h2 className="text-2xl font-semibold mb-4">Crear nuevo Partido</h2>
+        {error && <div className="text-red-500 mb-4">{error}</div>}
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label htmlFor="team1_id" className="block text-sm font-medium text-gray-700">
@@ -131,11 +147,13 @@ const AddMatchModal = ({ onClose }) => {
               name="team2_id"
               value={matchData.team2_id}
               onChange={handleInputChange}
+              disabled={!matchData.team1_id}
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               required
             >
               <option value="" disabled>Selecciona un equipo</option>
-              {teams.map((team) => (
+              {teams
+              .filter((team)=> Number(team.team_id) !== Number(matchData.team1_id)).map((team) => (
                 <option key={team.team_id} value={team.team_id}>
                   {team.team_name}
                 </option>
@@ -242,7 +260,7 @@ const AddMatchModal = ({ onClose }) => {
 
           <div className="mb-4">
             <label htmlFor="match_mvp" className="block text-sm font-medium text-gray-700">
-              MVP del Partido (Opcional)
+              MVP del Partido
             </label>
             <select
               type="number"
@@ -250,13 +268,14 @@ const AddMatchModal = ({ onClose }) => {
               name="match_mvp"
               value={matchData.match_mvp}
               onChange={handleInputChange}
-              required
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             >
+              <option value="" disabled>Seleccione un jugador</option>
               {players.map((player) => (
                 <option key={player.player_id} value={player.player_id}>
                   {player.player_name}
                 </option>
+                
               ))}
             </select>
           </div>
