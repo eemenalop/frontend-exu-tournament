@@ -61,14 +61,11 @@ export default function CreateTeam() {
               <table className="min-w-full divide-y divide-gray-300">
                 <thead className="bg-gray-50">
                   <tr>
-                    <th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
-                      Team ID
+                    <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                      Equipo
                     </th>
                     <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                      Team Name
-                    </th>
-                    <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                      Captain
+                      Capitan
                     </th>
                     <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 max-w-52 md:max-w-24">
                       Created At
@@ -83,9 +80,6 @@ export default function CreateTeam() {
                 <tbody className="divide-y divide-gray-200 bg-white">
                   {teams.map((team) => (
                     <tr key={team.team_id}>
-                      <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                        {team.team_id}
-                      </td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{team.team_name}</td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{team.captain}</td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500 max-w-52 md:max-w-24 truncate">{team.created_at}</td>

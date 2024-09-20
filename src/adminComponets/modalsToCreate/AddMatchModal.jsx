@@ -196,7 +196,7 @@ const AddMatchModal = ({ onClose }) => {
               Fecha y Hora del Partido
             </label>
             <input
-              type="datetime-local"
+              type="date"
               id="match_date_time"
               name="match_date_time"
               value={matchData.match_date_time}

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import AdminSideBar from "./AdminSidebar"
 import { BACKEND_URL } from "../enviroment";
-import AddStatsModal from './modalsToCreate/AddStatsPage'
+import AddStatsModal from './modalsToCreate/AddStatsModal'
 
 const CreatePlayersMatchStats = () => {
   const [statsMatches, setStatsMatches] = useState([]);

@@ -60,17 +60,11 @@ export default function CreatePlayer() {
               <table className="min-w-full divide-y divide-gray-300">
                 <thead className="bg-gray-50">
                   <tr>
-                    <th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
-                      Player ID
-                    </th>
                     <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                      Team ID
+                      Player Name
                     </th>
                     <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
                       Team Name
-                    </th>
-                    <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                      Player Name
                     </th>
                     <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
                       Position
@@ -92,12 +86,8 @@ export default function CreatePlayer() {
                 <tbody className="divide-y divide-gray-200 bg-white">
                   {players.map((player) => (
                     <tr key={player.player_id}>
-                      <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                        {player.player_id}
-                      </td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{player.team_id}</td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{player.teams.team_name}</td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{player.player_name}</td>
+                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{player.teams.team_name}</td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{player.position}</td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{player.number}</td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500 max-w-24 truncate">{player.created_at}</td>
