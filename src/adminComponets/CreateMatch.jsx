@@ -21,7 +21,7 @@ export default function CreateMatch() {
         console.error('Error fetching Matches:', error);
       }
     }
-    fetchMatch()
+    fetchMatch();
   },[])
 
   const handleAddMatch = () => {
@@ -66,13 +66,7 @@ export default function CreateMatch() {
                       Match ID
                     </th>
                     <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                      Team ID 1
-                    </th>
-                    <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
                       Team 1 Name
-                    </th>
-                    <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                    Team ID 2
                     </th>
                     <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
                     Team 2 Name
@@ -116,9 +110,7 @@ export default function CreateMatch() {
                   {matches.map((match) => (
                     <tr key={match.match_id}>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{match.match_id}</td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{match.team1_id}</td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{match.team1.team_name}</td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{match.team2_id}</td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{match.team2.team_name}</td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{match.score_team1}</td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{match.score_team2}</td>
