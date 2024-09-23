@@ -35,7 +35,7 @@ export default function TeamRosterTab({teamId}) {
           >
             {players.map((player) => (
               <li key={player.player_id} className="rounded-2xl bg-gray-800 px-8 py-10">
-                <img alt={player.player_name} src={player.player_photo} className="mx-auto h-48 w-48 rounded-full md:h-56 md:w-56 object-cover" />
+                <img alt={player.player_name} src={player.player_photo} className="mx-auto h-48 w-48 rounded-full md:h-56 md:w-56 object-cover object-top" />
                 <h3 className="mt-6 text-base font-semibold leading-7 tracking-tight text-white">{player.player_name}</h3>
                 <p className="text-sm leading-6 text-white">{player.position}</p>
                 <p className="text-sm leading-6 text-white">#{player.number}</p>

@@ -9,17 +9,17 @@ export default function HomeCarousel() {
           <img
             src="images/Home-Banners/Banner_1_exuitesa.png"
             alt="Banner Exuitesa"
-            className="w-full h-full object-cover transition-transform duration-700 ease-in-out"
+            className="w-full h-full object-contain transition-transform duration-700 ease-in-out"
           />
           <img
             src="images/Home-Banners/BANNER_2_Popiwa_campeones.png"
             alt="Banner Actuales campeones popiwa"
-            className="w-full h-full object-cover transition-transform duration-700 ease-in-out"
+            className="w-full h-full object-contain transition-transform duration-700 ease-in-out"
           />
           <img
             src="images/Home-Banners/Banner_3_collage.png"
             alt="Banner Collage"
-            className="w-full h-full object-cover transition-transform duration-700 ease-in-out"
+            className="w-full h-full object-contain transition-transform duration-700 ease-in-out"
           />
         </Carousel>
       </div>

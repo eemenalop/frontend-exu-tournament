@@ -11,12 +11,14 @@ const GeneralStats = () => {
     return (
         <>
             <Navbar />
-            <div>
-                <img src="images/Home-Banners/basketball-game-concept.png" alt='Stats component Image'/>
+            <div className='h-96 w-full'>
+                <img src="images/Home-Banners/basketball-game-concept.png"
+                    alt='Stats component Image'
+                    className='h-full w-full object-cover'/>
                 </div>
             <div className='px-4 py-6'>
                 <h2 className='text-2xl font-semibold mb-4 text-gray-800'>
-                    Top Players
+                    Lideres de estadisticas
                 </h2>
                 <div className='flex justify-end mb-11'>
                     <MatchTypeFilter
