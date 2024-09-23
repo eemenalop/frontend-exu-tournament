@@ -84,9 +84,12 @@ const AddStatsPlayersPage = () => {
         <td key={stat} className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
           <input
             type="number"
+            name={`player-${player.player_id}-${stat}`}
             value={playerStats[player.player_id][stat] || 0}
             onChange={(e) => handleStatChange(player.player_id, stat, e.target.value)}
             className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+            min={0}
+            max={100}
           />
         </td>
       ))}
