@@ -67,7 +67,8 @@ const AddStatsPlayersPage = () => {
 
       if (response.ok) {
         alert("Estadísticas guardadas correctamente.");
-      } else {
+        navigate('/admin-home/CreatePlayersMatchStats')
+      } else {    
         alert("Error al guardar las estadísticas.");
       }
     } catch (error) {
@@ -101,7 +102,7 @@ const AddStatsPlayersPage = () => {
       <div className="sm:flex sm:items-center">
         <div className="sm:flex-auto">
           <h1 className="text-base font-semibold leading-6 text-gray-900">
-            Agregar Estadísticas para el partido {match_id}
+            Agregar Estadísticas para el partido {match_id} {}
           </h1>
           <p className="mt-2 text-sm text-gray-700">
             Ingrese las estadísticas de los jugadores para ambos equipos.

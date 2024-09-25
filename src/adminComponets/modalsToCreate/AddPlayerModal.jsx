@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import { BACKEND_URL } from "../../enviroment";
 
 // eslint-disable-next-line react/prop-types
-export default function AddTeamModal({ onClose }) {
+export default function AddTeamModal({ player = null, onClose }) {
   const [playerData, setPlayerData] = useState({
-    player_name: "",
-    team_id: "",
-    position: "",
-    number: "",
-    player_photo: ""
+    player_name: player?.player_name || "",
+    team_id: player?.team_id || "",
+    position: player?.position || "",
+    number: player?.number || "",
+    player_photo: player?.player_photo || ""
   });
     
   const [teams, setTeams] = useState([]);
@@ -34,16 +34,20 @@ export default function AddTeamModal({ onClose }) {
     });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
     const newPlayer = {
       ...playerData,
       player_photo: playerData.player_photo || null,
+      
     };
 
     try {
-      const response = await fetch(`${BACKEND_URL}/.netlify/functions/createPlayer`, {
-        method: 'POST',
+      const url = player
+        ? `${BACKEND_URL}/.netlify/functions/updatePlayer/${player.player_id}`
+        : `${BACKEND_URL}/.netlify/functions/createPlayer`;
+        console.log('Request URL:', url);
+      const response = await fetch(url, {
+        method: player ? 'PUT' : 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -51,19 +55,21 @@ export default function AddTeamModal({ onClose }) {
       });
 
       if (!response.ok) {
-        throw new Error('Error creating player');
+        throw new Error(player ? 'Error updating player' : 'Error creating player');
       }
 
       onClose(); 
     } catch (error) {
-      console.error('Error creating player:', error);
+      console.error('Error submitting player:', error);
     }
   };
 
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50 bg-gray-800 bg-opacity-75">
       <div className="bg-white rounded-lg p-6 max-w-md w-full">
-        <h2 className="text-2xl font-semibold mb-4">Crear nuevo Jugador</h2>
+        <h2 className="text-2xl font-semibold mb-4">
+          {player ? "Edit Player" : "Create Player"}
+        </h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label htmlFor="player_name" className="block text-sm font-medium text-gray-700">
@@ -165,7 +171,7 @@ export default function AddTeamModal({ onClose }) {
               type="submit"
               className="bg-indigo-600 text-white px-4 py-2 rounded-md"
             >
-              Add Player
+              {player ? "Actualizar jugador" : "Crear jugador"}
             </button>
           </div>
         </form>

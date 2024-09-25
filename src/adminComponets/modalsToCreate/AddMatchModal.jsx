@@ -172,7 +172,6 @@ const AddMatchModal = ({ onClose }) => {
               value={matchData.score_team1}
               onChange={handleInputChange}
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-              required
             />
           </div>
 
@@ -187,7 +186,6 @@ const AddMatchModal = ({ onClose }) => {
               value={matchData.score_team2}
               onChange={handleInputChange}
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-              required
             />
           </div>
 
@@ -277,6 +275,24 @@ const AddMatchModal = ({ onClose }) => {
                 </option>
                 
               ))}
+            </select>
+          </div>
+
+          <div className="mb-4">
+            <label htmlFor="match_mvp" className="block text-sm font-medium text-gray-700">
+              Estado del partido
+            </label>
+            <select
+              id="match_mvp"
+              name="match_mvp"
+              value={matchData.match_mvp}
+              onChange={handleInputChange}
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            >
+              <option value="" disabled>Seleccione un jugador</option>
+              <option value="completo">Completo</option>
+              <option value="suspendido">Suspendido</option>
+              <option value="programado">Programado</option>
             </select>
           </div>
 

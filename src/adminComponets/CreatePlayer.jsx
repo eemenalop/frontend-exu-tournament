@@ -7,6 +7,7 @@ import { BACKEND_URL } from "../enviroment";
 export default function CreatePlayer() {
   const [players, setPlayers] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedPlayer, setSelectedPlayer] = useState(null);
 
   useEffect(() => {
     const fetchPlayers = async () => {
@@ -25,8 +26,14 @@ export default function CreatePlayer() {
   }, [])
   
   const handleAddPlayer = () => {
+    setSelectedPlayer(null);
     setIsModalOpen(true);
   }
+
+  const handleEditPlayer = (player) => {
+    setSelectedPlayer(player);
+    setIsModalOpen(true);
+  };
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
@@ -93,9 +100,9 @@ export default function CreatePlayer() {
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500 max-w-24 truncate">{player.created_at}</td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500 max-w-24 truncate">{player.player_photo}</td>
                       <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                        <a href="#" className="text-indigo-600 hover:text-indigo-900">
-                          Edit<span className="sr-only"></span>
-                        </a>
+                        <button onClick={()=> handleEditPlayer(player)} className="text-indigo-600 hover:text-indigo-900">
+                          Edit<span className="sr-only">, {player.player_name}</span>
+                        </button>
                       </td>
                     </tr>
                   ))}
@@ -106,7 +113,7 @@ export default function CreatePlayer() {
           </div>
         </div>
       </div>
-      {isModalOpen && <AddPlayerModal onClose={handleCloseModal} />}
+      {isModalOpen && <AddPlayerModal player={selectedPlayer} onClose={handleCloseModal} />}
     </>
   )
 }
