@@ -57,7 +57,7 @@ export const PlayerProfile = ({playerId }) => {
                     <img
                         src={playerInfo.player_photo} // Cambia este valor por la URL de la foto del jugador
                         alt={playerInfo.player_name}
-                        className="w-64 h-64 rounded-full mb-4 object-cover"
+                        className="w-64 h-64 rounded-full mb-4 object-cover object-top"
                     />
                     <div className="text-gray-800 text-2xl font-bold">
                         {playerInfo.player_name}

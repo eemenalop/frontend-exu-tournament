@@ -9,7 +9,7 @@ const navigation = [
     { name: 'Inicio', href: '/', current: false },
     { name: 'Equipos', current: false, hasSubmenu: true },
     { name: 'Estadisticas', href: '/GeneralStats', current: false },
-    { name: 'Historia', href: '/historia', current: false },
+    { name: 'Historia', href: '#', current: false },
 ]
 
 function classNames(...classes) {
