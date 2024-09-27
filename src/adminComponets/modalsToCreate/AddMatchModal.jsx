@@ -2,23 +2,24 @@ import { useEffect, useState } from "react";
 import { BACKEND_URL } from "../../enviroment";
 
 // eslint-disable-next-line react/prop-types
-const AddMatchModal = ({ onClose }) => {
+const AddMatchModal = ({ match = null, onClose }) => {
   const [matchData, setMatchData] = useState({
-    team1_id: "",
-    team2_id: "",
-    score_team1: "",
-    score_team2: "",
-    match_date_time: "",
-    mode: "",
-    match_type: "",
-    location: "",
-    match_mvp: ""
+    team1_id: match?.team1_id || "",
+    team2_id: match?.team2_id || "",
+    score_team1: match?.score_team1 || "",
+    score_team2: match?.score_team2 || "",
+    winner: match?.winner || "",
+    match_date_time: match?.match_date_time || "",
+    match_type: match?.match_type || "",
+    location: match?.location || "",
+    match_mvp: match?.match_mvp || null,
+    state: match?.state || "programado",
   });
 
   const [teams, setTeams] = useState([]);
   const [players, setPlayers] = useState([]);
   const [winningTeamId, setWinningTeamId] = useState('');
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
 
   useEffect(() => {
     const fetchTeam = async () => {
@@ -48,6 +49,8 @@ const AddMatchModal = ({ onClose }) => {
     detectWinningTeam();
   }, [matchData.score_team1, matchData.score_team2, matchData.team1_id, matchData.team2_id]);
 
+  
+
   useEffect(() => {
     if (winningTeamId) {
       const fetchPlayers = async (winningTeamId) => {
@@ -76,8 +79,6 @@ const AddMatchModal = ({ onClose }) => {
     });
   };
 
-  
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newMatch = {
@@ -85,37 +86,48 @@ const AddMatchModal = ({ onClose }) => {
       match_mvp: matchData.match_mvp || null,
     };
 
+    console.log('Datos enviados al backend:', newMatch);
+
     if (matchData.score_team1 === matchData.score_team2) {
       setError("Los puntajes de ambos equipos no pueden ser iguales.");
       return;
     }
     setError("");
 
-    try {
-      const response = await fetch(`${BACKEND_URL}/.netlify/functions/createMatch`, {
-        method: 'POST',
+    try { 
+      const url = match
+        ? `${BACKEND_URL}/.netlify/functions/updateMatch/${match.match_id}`
+        : `${BACKEND_URL}/.netlify/functions/createMatch`; 
+
+      const response = await fetch(url, {
+        method: match ? 'PUT' : 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(newMatch),
+        body: JSON.stringify({
+          ...newMatch,
+          match_id: match?.match_id, 
+        }),
       });
-
-      console.log(matchData)
-
+      
       if (!response.ok) {
-        throw new Error('Error creating match');
+        throw new Error(match ? 'Error updating match' : 'Error creating match');
       }
 
       onClose();
     } catch (error) {
-      console.error('Error creating match:', error);
+      console.error('Error creating or updating match:', error);
     }
   };
+
+  useEffect(() => {
+    console.log('Match data:', match);
+  }, [match]);
 
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50 bg-gray-800 bg-opacity-75">
       <div className="bg-white rounded-lg p-6 max-w-md w-full max-h-[90vh] overflow-y-auto">
-        <h2 className="text-2xl font-semibold mb-4">Crear nuevo Partido</h2>
+        <h2 className="text-2xl font-semibold mb-4">{match ? "Editar Partido" : "Crear Nuevo Partido"}</h2>
         {error && <div className="text-red-500 mb-4">{error}</div>}
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
@@ -279,15 +291,16 @@ const AddMatchModal = ({ onClose }) => {
           </div>
 
           <div className="mb-4">
-            <label htmlFor="match_mvp" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="state" className="block text-sm font-medium text-gray-700">
               Estado del partido
             </label>
             <select
-              id="match_mvp"
-              name="match_mvp"
-              value={matchData.match_mvp}
+              id="state"
+              name="state"
+              value={matchData.state}
               onChange={handleInputChange}
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              required
             >
               <option value="" disabled>Seleccione un jugador</option>
               <option value="completo">Completo</option>
@@ -308,7 +321,7 @@ const AddMatchModal = ({ onClose }) => {
               type="submit"
               className="bg-indigo-600 text-white px-4 py-2 rounded-md"
             >
-              Crear Partido
+              {match ? "Actualizar Partido" : "Crear Partido"}
             </button>
           </div>
         </form>

@@ -34,7 +34,8 @@ export default function AddTeamModal({ player = null, onClose }) {
     });
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     const newPlayer = {
       ...playerData,
       player_photo: playerData.player_photo || null,
@@ -45,7 +46,6 @@ export default function AddTeamModal({ player = null, onClose }) {
       const url = player
         ? `${BACKEND_URL}/.netlify/functions/updatePlayer/${player.player_id}`
         : `${BACKEND_URL}/.netlify/functions/createPlayer`;
-        console.log('Request URL:', url);
       const response = await fetch(url, {
         method: player ? 'PUT' : 'POST',
         headers: {
@@ -67,8 +67,8 @@ export default function AddTeamModal({ player = null, onClose }) {
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50 bg-gray-800 bg-opacity-75">
       <div className="bg-white rounded-lg p-6 max-w-md w-full">
-        <h2 className="text-2xl font-semibold mb-4">
-          {player ? "Edit Player" : "Create Player"}
+        <h2 className="text-2xl font-semibold mb-4 text-red-600">
+          {player ? "Editar Jugador" : "Crear Jugador"}
         </h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
@@ -119,7 +119,7 @@ export default function AddTeamModal({ player = null, onClose }) {
               value={playerData.position}
               onChange={handleInputChange}
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                required
+              required
             >
                           <option value="" disabled>Selecciona una posicion</option>
                           <option value="PG">PG</option>
@@ -140,9 +140,9 @@ export default function AddTeamModal({ player = null, onClose }) {
                 value={playerData.number}
                 onChange={handleInputChange}
                 className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                          required
-                          min={0}
-                          max={99}
+                required
+                min={0}
+                max={99}
                 />
           </div>
           <div className="mb-4">

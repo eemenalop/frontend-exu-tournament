@@ -19,7 +19,7 @@ export default function CreatePlayer() {
         const data = await response.json();
         setPlayers(data);
       } catch (error) {
-        console.error('Error fetching stats:', error);
+        console.error('Error fetching players:', error);
       }
     }
     fetchPlayers();

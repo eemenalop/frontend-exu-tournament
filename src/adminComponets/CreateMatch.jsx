@@ -7,6 +7,7 @@ import AddMatchModal from "./modalsToCreate/AddMatchModal";
 export default function CreateMatch() {
   const [matches, setMatches] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedMatch, setSelectedMatch] = useState(null);
 
   useEffect(() => {
     const fetchMatch = async () => {
@@ -25,12 +26,18 @@ export default function CreateMatch() {
   },[])
 
   const handleAddMatch = () => {
+    setSelectedMatch(null);
     setIsModalOpen(true);
-  }
+  };
+
+  const handleEditMatch = (match) => {
+    setSelectedMatch(match); 
+    setIsModalOpen(true);
+  };
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
-  }
+  };
 
 
   return (
@@ -127,9 +134,13 @@ export default function CreateMatch() {
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{match.created_at}</td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{match.state}</td>
                       <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                        <a href="#" className="text-indigo-600 hover:text-indigo-900">
-                          Edit<span className="sr-only"></span>
-                        </a>
+                      <button
+                            className="text-indigo-600 hover:text-indigo-900"
+                            onClick={() => handleEditMatch(match)}
+                            
+                          >
+                            Edit
+                          </button>
                       </td>
                     </tr>
                   ))}
@@ -140,7 +151,7 @@ export default function CreateMatch() {
         </div>
       </div>
       </div>
-      {isModalOpen && <AddMatchModal onClose={handleCloseModal}/> }
+      {isModalOpen && <AddMatchModal match={selectedMatch} onClose={handleCloseModal} /> }
     </>
   )
 }

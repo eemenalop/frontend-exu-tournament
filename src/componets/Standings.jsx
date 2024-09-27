@@ -14,11 +14,12 @@ function Standing() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Fetch matches data
         const matchesResponse = await fetch(`${BACKEND_URL}/.netlify/functions/getAllMatches?match_type=Regular`);
         const matches = await matchesResponse.json();
 
-        // Fetch teams data
+        const completedMatches = matches.filter(match => match.state === "completo");
+
+       
         const teamsResponse = await fetch(`${BACKEND_URL}/.netlify/functions/getAllMatches`);
         const teams = await teamsResponse.json();
 
@@ -29,7 +30,7 @@ function Standing() {
 
         const standingsMap = {};
 
-        matches.forEach((match) => {
+        completedMatches.forEach((match) => {
           const { team1_id, team2_id, score_team1, score_team2 } = match;
           const team1_name = teamNameMap[team1_id];
           const team2_name = teamNameMap[team2_id];

@@ -7,6 +7,7 @@ export default function CreateTeam() {
 
   const [teams, setTeams] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedTeam, setSelectedTeam] = useState(null);
   
   useEffect(() => {
     const fetchTeams = async () => {
@@ -17,7 +18,6 @@ export default function CreateTeam() {
         }
         const data = await response.json();
         setTeams(data)
-
       } catch (error) {
         console.error('Error fetching stats:', error);
       }
@@ -30,9 +30,23 @@ export default function CreateTeam() {
     setIsModalOpen(true);
   }
 
-  const handleCloseModal = () => {
+  const handleEditTeam = (team) => {
+    setSelectedTeam(team); 
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = async () => {
     setIsModalOpen(false);
-  }
+    setSelectedTeam(null); 
+    try {
+      const response = await fetch(`${BACKEND_URL}/.netlify/functions/getAllTeams`);
+      const data = await response.json();
+      setTeams(data);
+    } catch (error) {
+      console.error('Error fetching updated teams:', error);
+    }
+  };
+
   return (
     <>
       <AdminSideBar/>
@@ -85,9 +99,12 @@ export default function CreateTeam() {
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500 max-w-52 md:max-w-24 truncate">{team.created_at}</td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500 max-w-24 truncate">{team.logo_url}</td>
                       <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                        <a href="#" className="text-indigo-600 hover:text-indigo-900">
-                          Edit<span className="sr-only"></span>
-                        </a>
+                      <button
+                            onClick={() => handleEditTeam(team)}
+                            className="text-indigo-600 hover:text-indigo-900"
+                          >
+                            Edit<span className="sr-only">, {team.team_name}</span>
+                          </button>
                       </td>
                     </tr>
                   ))}
@@ -98,7 +115,7 @@ export default function CreateTeam() {
         </div>
       </div>
       </div>
-      {isModalOpen && <AddTeamModal onClose={handleCloseModal} />}
+      {isModalOpen && <AddTeamModal onClose={handleCloseModal} team={selectedTeam}/>}
     </>
   )
 }
