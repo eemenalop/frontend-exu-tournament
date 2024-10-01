@@ -121,6 +121,9 @@ export const PlayerProfile = ({playerId }) => {
                                 TOV
                             </th>
                             <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-red-700">
+                                PF
+                            </th>
+                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-red-700">
                                 FGM
                             </th>
                             <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-red-700">
@@ -161,6 +164,7 @@ export const PlayerProfile = ({playerId }) => {
                                     <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(playerInfo.steals)}</td>
                                     <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(playerInfo.blocks)}</td>
                                     <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(playerInfo.turnovers)}</td>
+                                    <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(playerInfo.fouls)}</td>
                                     <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(playerInfo.fgm)}</td>
                                     <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(playerInfo.fga)}</td>
                                     <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(playerInfo.fg_percentage)}</td>

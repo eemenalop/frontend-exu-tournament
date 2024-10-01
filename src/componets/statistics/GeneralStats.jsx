@@ -34,10 +34,10 @@ const GeneralStats = () => {
                         <StatsLeaders matchType={matchType} statType="blocks" />
                         <StatsLeaders matchType={matchType} statType="turnovers" />
                         <StatsLeaders matchType={matchType} statType="pra" />
-                        <StatsLeaders matchType={matchType} statType="fg_percentage" />
+                        {/*<StatsLeaders matchType={matchType} statType="fg_percentage" />
                         <StatsLeaders matchType={matchType} statType="threeptm" />
                         <StatsLeaders matchType={matchType} statType="threept_percentage" />
-                        <StatsLeaders matchType={matchType} statType="ft_percentage" />
+                        <StatsLeaders matchType={matchType} statType="ft_percentage" />*/}
                     </div>
                 </div>
             </div>

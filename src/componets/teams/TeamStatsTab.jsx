@@ -85,6 +85,9 @@ import { BACKEND_URL } from "../../enviroment";
                         TOV
                       </th>
                       <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                        PF
+                      </th>
+                      <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
                         FGM
                       </th>
                       <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
@@ -133,6 +136,7 @@ import { BACKEND_URL } from "../../enviroment";
                         <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(player.steals)}</td>
                         <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(player.blocks)}</td>
                         <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(player.turnovers)}</td>
+                        <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(player.fouls)}</td>
                         <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(player.fgm)}</td>
                         <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(player.fga)}</td>
                         <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(player.fg_percentage)}</td>

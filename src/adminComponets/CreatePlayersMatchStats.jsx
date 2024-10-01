@@ -82,22 +82,25 @@ const CreatePlayersMatchStats = () => {
                     Player Name
                     </th>
                     <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                    Points
+                    PTS
                     </th>
                     <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                    Assists
+                    AST
                     </th>
                     <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                    Rebounds
+                    REB
                     </th>
                     <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                    Steals
+                    STL
                     </th>
                     <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                    Blocks
+                    BLK
                     </th>
                     <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                    Turnovers
+                    TOV
+                    </th>
+                    <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                    PF
                     </th>
                     <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
                     PRA
@@ -150,6 +153,7 @@ const CreatePlayersMatchStats = () => {
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{stat.steals}</td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{stat.blocks}</td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{stat.turnovers}</td>
+                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{stat.fouls}</td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{stat.pra}</td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{stat.fgm}</td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{stat.fga}</td>

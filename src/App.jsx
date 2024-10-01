@@ -13,6 +13,8 @@ import CreatePlayer from './adminComponets/CreatePlayer'
 import CreateMatch from './adminComponets/CreateMatch'
 import CreatePlayersMatchStats from './adminComponets/CreatePlayersMatchStats'
 import AddStatsPlayersPage from './adminComponets/AddStatsPlayersPage';
+import Matches from './componets/results/Matches'
+import MatchesBoxScore from './componets/results/MatchesBoxScore'
 
 function App() {
   return (
@@ -50,6 +52,10 @@ function App() {
         <Route path="/CalendarDetail" element={<CalendarDetail />} />
 
         <Route path="/GeneralStats" element={<GeneralStats />} />
+
+        <Route path="/Matches" element={<Matches />} />
+
+        <Route path="/match/:matchId/MatchesBoxScore" element={<MatchesBoxScore />} />
         
         <Route path="/team/:teamId" element={<Team />} />
 

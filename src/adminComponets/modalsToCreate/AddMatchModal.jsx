@@ -86,8 +86,6 @@ const AddMatchModal = ({ match = null, onClose }) => {
       match_mvp: matchData.match_mvp || null,
     };
 
-    console.log('Datos enviados al backend:', newMatch);
-
     if (matchData.score_team1 === matchData.score_team2) {
       setError("Los puntajes de ambos equipos no pueden ser iguales.");
       return;
@@ -98,16 +96,14 @@ const AddMatchModal = ({ match = null, onClose }) => {
       const url = match
         ? `${BACKEND_URL}/.netlify/functions/updateMatch/${match.match_id}`
         : `${BACKEND_URL}/.netlify/functions/createMatch`; 
-
+        console.log('Data to be sent:', newMatch);
       const response = await fetch(url, {
         method: match ? 'PUT' : 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          ...newMatch,
-          match_id: match?.match_id, 
-        }),
+        body: JSON.stringify(newMatch
+        ),
       });
       
       if (!response.ok) {

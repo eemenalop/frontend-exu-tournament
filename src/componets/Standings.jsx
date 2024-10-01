@@ -79,6 +79,7 @@ function Standing() {
   return (
     <div className="flex justify-center items-center mt-10">
       <div className="overflow-x-auto w-full max-w-md mx-auto">
+      <h2 className="text-2xl font-bold mb-6 text-gray-800 text-center">Standings</h2>
         <table className="min-w-full bg-white border border-gray-200">
           <thead>
             <tr>
