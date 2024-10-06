@@ -12,6 +12,7 @@ const AddMatchModal = ({ match = null, onClose }) => {
     match_date_time: match?.match_date_time || "",
     match_type: match?.match_type || "",
     location: match?.location || "",
+    mode: match?.mode || "",
     match_mvp: match?.match_mvp || null,
     state: match?.state || "programado",
   });
