@@ -168,8 +168,8 @@ const MatchBoxScore = () => {
                                                 <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">STL</th>
                                                 <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">BLK</th>
                                                 <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">TOV</th>
-                                                <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">PRA</th>
                                                 <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">PF</th>
+                                                <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">PRA</th>
                                             </tr>
                                         </thead>
                                         <tbody className="divide-y divide-gray-200 bg-white">
@@ -186,8 +186,8 @@ const MatchBoxScore = () => {
                                                     <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{player.steals}</td>
                                                     <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{player.blocks}</td>
                                                     <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{player.turnovers}</td>
-                                                    <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{player.pra}</td>
                                                     <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{player.fouls}</td>
+                                                    <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{player.pra}</td>
                                                 </tr>
                                             ))}
                                         <tr>
@@ -211,10 +211,10 @@ const MatchBoxScore = () => {
                                                     {team1Players.reduce((total, player) => total + player.turnovers, 0)}
                                                 </td>
                                                 <td className="whitespace-nowrap px-3 py-4 text-sm font-semibold text-black">
-                                                    {team1Players.reduce((total, player) => total + player.pra, 0)}
+                                                    {team1Players.reduce((total, player) => total + player.fouls, 0)}
                                                 </td>
                                                 <td className="whitespace-nowrap px-3 py-4 text-sm font-semibold text-black">
-                                                    {team1Players.reduce((total, player) => total + player.fouls, 0)}
+                                                    {team1Players.reduce((total, player) => total + player.pra, 0)}
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -236,8 +236,8 @@ const MatchBoxScore = () => {
                                                 <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">STL</th>
                                                 <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">BLK</th>
                                                 <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">TOV</th>
-                                                <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">PRA</th>
                                                 <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">PF</th>
+                                                <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">PRA</th>
                                             </tr>
                                         </thead>
                                         <tbody className="divide-y divide-gray-200 bg-white">
@@ -254,8 +254,8 @@ const MatchBoxScore = () => {
                                                     <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{player.steals}</td>
                                                     <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{player.blocks}</td>
                                                     <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{player.turnovers}</td>
-                                                    <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{player.pra}</td>
                                                     <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{player.fouls}</td>
+                                                    <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{player.pra}</td>
                                                 </tr>
                                             ))}
                                             <tr>
@@ -279,10 +279,10 @@ const MatchBoxScore = () => {
                                                     {team2Players.reduce((total, player) => total + player.turnovers, 0)}
                                                 </td>
                                                 <td className="whitespace-nowrap px-3 py-4 text-sm font-semibold text-black">
-                                                    {team2Players.reduce((total, player) => total + player.pra, 0)}
+                                                    {team2Players.reduce((total, player) => total + player.fouls, 0)}
                                                 </td>
                                                 <td className="whitespace-nowrap px-3 py-4 text-sm font-semibold text-black">
-                                                    {team2Players.reduce((total, player) => total + player.fouls, 0)}
+                                                    {team2Players.reduce((total, player) => total + player.pra, 0)}
                                                 </td>
                                             </tr>
                                         </tbody>

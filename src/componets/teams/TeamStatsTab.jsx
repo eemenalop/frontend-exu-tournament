@@ -87,7 +87,7 @@ import { BACKEND_URL } from "../../enviroment";
                       <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
                         PF
                       </th>
-                      <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                      {/*<th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
                         FGM
                       </th>
                       <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
@@ -113,7 +113,7 @@ import { BACKEND_URL } from "../../enviroment";
                       </th>
                       <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
                         FT%
-                      </th>
+                      </th>*/}
                       <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
                         PRA
                       </th>
@@ -137,7 +137,7 @@ import { BACKEND_URL } from "../../enviroment";
                         <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(player.blocks)}</td>
                         <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(player.turnovers)}</td>
                         <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(player.fouls)}</td>
-                        <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(player.fgm)}</td>
+                        {/*<td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(player.fgm)}</td>
                         <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(player.fga)}</td>
                         <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(player.fg_percentage)}</td>
                         <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(player.three_ptm)}</td>
@@ -145,7 +145,7 @@ import { BACKEND_URL } from "../../enviroment";
                         <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(player.threept_percentage)}</td>
                         <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(player.ftm)}</td>
                         <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(player.fta)}</td>
-                        <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(player.ft_percentage)}</td>
+                        <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(player.ft_percentage)}</td>*/}
                         <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(player.pra)}</td>
                       </tr>
                     ))}

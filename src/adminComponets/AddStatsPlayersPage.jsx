@@ -26,12 +26,13 @@ const AddStatsPlayersPage = () => {
             steals: 0,
             blocks: 0,
             turnovers: 0,
-            fga: 0,
+            fouls: 0,
+            /*fga: 0,
             fgm: 0,
             threepta: 0,
             threeptm: 0,
             fta: 0,
-            ftm: 0,
+            ftm: 0,*/
           };
         });
         setPlayerStats(initialStats);
@@ -126,12 +127,13 @@ const AddStatsPlayersPage = () => {
                     <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">STL</th>
                     <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">BLK</th>
                     <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">TOV</th>
-                    <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">FGA</th>
+                    <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">PF</th>
+                    {/*<th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">FGA</th>
                     <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">FGM</th>
                     <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">3PTA</th>
                     <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">3PTM</th>
                     <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">FTA</th>
-                    <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">FTM</th>
+                    <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">FTM</th>*/}
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200 bg-white">
@@ -160,12 +162,13 @@ const AddStatsPlayersPage = () => {
                     <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">STL</th>
                     <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">BLK</th>
                     <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">TOV</th>
-                    <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">FGA</th>
+                    <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">PF</th>
+                    {/*<th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">FGA</th>
                     <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">FGM</th>
                     <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">3PTA</th>
                     <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">3PTM</th>
                     <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">FTA</th>
-                    <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">FTM</th>
+                    <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">FTM</th>*/}
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200 bg-white">

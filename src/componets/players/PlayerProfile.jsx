@@ -123,7 +123,7 @@ export const PlayerProfile = ({playerId }) => {
                             <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-red-700">
                                 PF
                             </th>
-                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-red-700">
+                            {/*<th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-red-700">
                                 FGM
                             </th>
                             <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-red-700">
@@ -149,7 +149,7 @@ export const PlayerProfile = ({playerId }) => {
                             </th>
                             <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-red-700">
                                 FT%
-                            </th>
+                            </th>*/}
                             <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-red-700">
                                 PRA
                             </th>
@@ -165,7 +165,7 @@ export const PlayerProfile = ({playerId }) => {
                                     <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(playerInfo.blocks)}</td>
                                     <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(playerInfo.turnovers)}</td>
                                     <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(playerInfo.fouls)}</td>
-                                    <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(playerInfo.fgm)}</td>
+                                    {/*<td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(playerInfo.fgm)}</td>
                                     <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(playerInfo.fga)}</td>
                                     <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(playerInfo.fg_percentage)}</td>
                                     <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(playerInfo.three_ptm)}</td>
@@ -173,7 +173,7 @@ export const PlayerProfile = ({playerId }) => {
                                     <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(playerInfo.threept_percentage)}</td>
                                     <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(playerInfo.ftm)}</td>
                                     <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(playerInfo.fta)}</td>
-                                    <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(playerInfo.ft_percentage)}</td>
+                                    <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(playerInfo.ft_percentage)}</td>*/}
                                     <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(playerInfo.pra)}</td>
                                 </tr>
                             </tbody>
