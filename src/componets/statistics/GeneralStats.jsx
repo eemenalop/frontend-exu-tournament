@@ -7,6 +7,7 @@ import MatchTypeFilter from './MatchTypeFilter';
 const GeneralStats = () => {
 
     const [matchType, setMatchType] = useState('Regular');
+    /*const [statScope, setStatScope] = useState('per_game');*/
 
     return (
         <>
@@ -20,11 +21,11 @@ const GeneralStats = () => {
                 <h2 className='text-2xl font-semibold mb-4 text-gray-800'>
                     Lideres de estadisticas
                 </h2>
-                <div className='flex justify-end mb-11'>
-                    <MatchTypeFilter
-                        setSelectedMatchType={setMatchType}
-                        />
+                <div className='flex justify-start mb-11'>
+                    <MatchTypeFilter setSelectedMatchType={setMatchType}/>
+                    {/*<StatScopeFilter setSelectedStatScope={setStatScope} />*/}
                 </div>
+                
                 <div className='max-w-6xl mx-auto'>
                     <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4'>
                         <StatsLeaders matchType={matchType} statType='points' />
