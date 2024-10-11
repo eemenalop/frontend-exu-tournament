@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react"
 import MatchTypeFilter from "../statistics/MatchTypeFilter"
 import { BACKEND_URL } from "../../enviroment";
+import StatScopeFilter from "../statistics/StatScopeFilter";
 
 
 // eslint-disable-next-line react/prop-types
 export const PlayerProfile = ({playerId }) => {
     const [playerInfo, setPlayerInfo] = useState({});
     const [matchType, setMatchType] = useState('Regular');
+    const [statScope, setStatScope] = useState('Per Game');
 
     useEffect(()=>{
 
@@ -33,11 +35,19 @@ export const PlayerProfile = ({playerId }) => {
         fetchPlayerInfo();
     }, [matchType, playerId])
 
-    const roundValue = (value, isPercentage = false) => {
+    const calculateStat = (statPerGame) => {
+        if (statScope === "Totals" && playerInfo.games_played) {
+            return statPerGame * playerInfo.games_played;
+        }
+        return statPerGame;
+    }
+
+    const roundValue = (value, isTotal = false, isPercentage = false) => {
         if (value === null || value === undefined) {
             return 'N/A';
         }
-        return isPercentage ? (value * 100).toFixed(2) : value.toFixed(1);
+        const decimalPlaces = isTotal ? 0 : 1;
+        return isPercentage ? (value * 100).toFixed(2) : value.toFixed(decimalPlaces);
     };
 
     if (!playerInfo) {
@@ -88,9 +98,9 @@ export const PlayerProfile = ({playerId }) => {
 
             <div className="px-4 sm:px-6 lg:px-8">
                 <div className="mb-6">
-                <MatchTypeFilter
-                    setSelectedMatchType={setMatchType}
-                    />
+                    <MatchTypeFilter setSelectedMatchType={setMatchType} />
+                    <StatScopeFilter setSelectedStatScope={setStatScope} />
+                    
                     </div>
                 <div className="mt-8 flow-root mx-6 ">
                 <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -158,13 +168,13 @@ export const PlayerProfile = ({playerId }) => {
                                     <tbody className="divide-y divide-gray-200 bg-white">
                                 <tr>
                                     <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{playerInfo.games_played}</td>
-                                    <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(playerInfo.points)}</td>
-                                    <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(playerInfo.rebounds)}</td>
-                                    <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(playerInfo.assists)}</td>
-                                    <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(playerInfo.steals)}</td>
-                                    <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(playerInfo.blocks)}</td>
-                                    <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(playerInfo.turnovers)}</td>
-                                    <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(playerInfo.fouls)}</td>
+                                    <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(calculateStat(playerInfo.points), statScope === 'Totals')}</td>
+                                    <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(calculateStat(playerInfo.rebounds), statScope === 'Totals')}</td>
+                                    <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(calculateStat(playerInfo.assists), statScope === 'Totals')}</td>
+                                    <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(calculateStat(playerInfo.steals), statScope === 'Totals')}</td>
+                                    <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(calculateStat(playerInfo.blocks), statScope === 'Totals')}</td>
+                                    <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(calculateStat(playerInfo.turnovers), statScope === 'Totals')}</td>
+                                    <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(calculateStat(playerInfo.fouls), statScope === 'Totals')}</td>
                                     {/*<td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(playerInfo.fgm)}</td>
                                     <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(playerInfo.fga)}</td>
                                     <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(playerInfo.fg_percentage)}</td>
@@ -174,7 +184,7 @@ export const PlayerProfile = ({playerId }) => {
                                     <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(playerInfo.ftm)}</td>
                                     <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(playerInfo.fta)}</td>
                                     <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(playerInfo.ft_percentage)}</td>*/}
-                                    <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(playerInfo.pra)}</td>
+                                    <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(calculateStat(playerInfo.pra), statScope === 'Totals')}</td>
                                 </tr>
                             </tbody>
                         </table>

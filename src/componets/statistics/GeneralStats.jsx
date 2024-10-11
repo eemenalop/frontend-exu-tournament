@@ -3,11 +3,12 @@ import Footer from '../Footer';
 import Navbar from '../NavBar';
 import StatsLeaders from './StatsLeaders';
 import MatchTypeFilter from './MatchTypeFilter';
+import StatScopeFilter from './StatScopeFilter';
 
 const GeneralStats = () => {
 
     const [matchType, setMatchType] = useState('Regular');
-    /*const [statScope, setStatScope] = useState('per_game');*/
+    const [statScope, setStatScope] = useState('Per Game');
 
     return (
         <>
@@ -23,18 +24,18 @@ const GeneralStats = () => {
                 </h2>
                 <div className='flex justify-start mb-11'>
                     <MatchTypeFilter setSelectedMatchType={setMatchType}/>
-                    {/*<StatScopeFilter setSelectedStatScope={setStatScope} />*/}
+                    <StatScopeFilter setSelectedStatScope={setStatScope} />
                 </div>
                 
                 <div className='max-w-6xl mx-auto'>
                     <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4'>
-                        <StatsLeaders matchType={matchType} statType='points' />
-                        <StatsLeaders matchType={matchType} statType="assists" />
-                        <StatsLeaders matchType={matchType} statType="rebounds" />
-                        <StatsLeaders matchType={matchType} statType="steals" />
-                        <StatsLeaders matchType={matchType} statType="blocks" />
-                        <StatsLeaders matchType={matchType} statType="turnovers" />
-                        <StatsLeaders matchType={matchType} statType="pra" />
+                        <StatsLeaders matchType={matchType} statScope={statScope} statType='points' />
+                        <StatsLeaders matchType={matchType} statScope={statScope} statType="assists" />
+                        <StatsLeaders matchType={matchType} statScope={statScope} statType="rebounds" />
+                        <StatsLeaders matchType={matchType} statScope={statScope} statType="steals" />
+                        <StatsLeaders matchType={matchType} statScope={statScope} statType="blocks" />
+                        <StatsLeaders matchType={matchType} statScope={statScope} statType="turnovers" />
+                        <StatsLeaders matchType={matchType} statScope={statScope} statType="pra" />
                         {/*<StatsLeaders matchType={matchType} statType="fg_percentage" />
                         <StatsLeaders matchType={matchType} statType="threeptm" />
                         <StatsLeaders matchType={matchType} statType="threept_percentage" />

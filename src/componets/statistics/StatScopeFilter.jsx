@@ -13,7 +13,7 @@ export default function StatScopeFilter({ setSelectedStatScope }) {
 
     const handleChange = (value) => {
         setSelected(value);
-        setSelectedStatScope(value.scope.toLowerCase().replace(' ', '_')); // Transform 'Per Game' -> 'per_game' y 'Totals' -> 'totals'
+        setSelectedStatScope(value.scope);
     };
 
     return (

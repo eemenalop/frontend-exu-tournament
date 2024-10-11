@@ -5,7 +5,7 @@ import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
 
 const matchesTypes = [
     { id: 1, matchType: 'Regular' },
-    { id: 2, matchType: 'Semifinal' }/*,
+    /*{ id: 2, matchType: 'Semifinal' },
     { id: 3, matchType: 'Final' }*/
 ]
 

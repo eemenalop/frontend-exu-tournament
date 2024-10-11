@@ -13,8 +13,9 @@ import CreatePlayer from './adminComponets/CreatePlayer'
 import CreateMatch from './adminComponets/CreateMatch'
 import CreatePlayersMatchStats from './adminComponets/CreatePlayersMatchStats'
 import AddStatsPlayersPage from './adminComponets/AddStatsPlayersPage';
-import Matches from './componets/results/Matches'
-import MatchesBoxScore from './componets/results/MatchesBoxScore'
+import Matches from './componets/results/Matches';
+import MatchesBoxScore from './componets/results/MatchesBoxScore';
+import StatsFullList from './componets/statistics/StatsFullList';
 
 function App() {
   return (
@@ -52,6 +53,8 @@ function App() {
         <Route path="/CalendarDetail" element={<CalendarDetail />} />
 
         <Route path="/GeneralStats" element={<GeneralStats />} />
+
+        <Route path="/GeneralStats/full-list/:initialStatType/:initialStatScope" element={<StatsFullList />} />
 
         <Route path="/Matches" element={<Matches />} />
 
