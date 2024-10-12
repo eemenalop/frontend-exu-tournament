@@ -4,6 +4,7 @@ import Footer from '../Footer';
 import MatchTypeFilter from './MatchTypeFilter';
 import StatScopeFilter from './StatScopeFilter';
 import { BACKEND_URL } from '../../enviroment';
+import { Link } from 'react-router-dom';
 
 const StatsFullList = () => {
     const [matchType, setMatchType] = useState('Regular');
@@ -149,16 +150,20 @@ const StatsFullList = () => {
                                     {stats.map((player, index) => (
                                         <tr key={index}>
                                         <td className="px-4 py-2 text-sm text-gray-500">{index + 1}</td>
-                                        <td className={`px-4 py-2 text-sm text-gray-500 ${activeColumn === 'player_name' ? 'bg-gray-200' : ''}`}>{player.player_name}</td>
-                                        <td className={`px-4 py-2 text-sm text-gray-500 ${activeColumn === 'team_name' ? 'bg-gray-200' : ''}`}>{player.team_name}</td>
-                                        <td className={`px-4 py-2 text-sm text-gray-500 ${activeColumn === 'points' ? 'bg-gray-200' : ''}`}>{player.points}</td>
-                                        <td className={`px-4 py-2 text-sm text-gray-500 ${activeColumn === 'assists' ? 'bg-gray-200' : ''}`}>{player.assists}</td>
-                                        <td className={`px-4 py-2 text-sm text-gray-500 ${activeColumn === 'rebounds' ? 'bg-gray-200' : ''}`}>{player.rebounds}</td>
-                                        <td className={`px-4 py-2 text-sm text-gray-500 ${activeColumn === 'steals' ? 'bg-gray-200' : ''}`}>{player.steals}</td>
-                                        <td className={`px-4 py-2 text-sm text-gray-500 ${activeColumn === 'blocks' ? 'bg-gray-200' : ''}`}>{player.blocks}</td>
-                                        <td className={`px-4 py-2 text-sm text-gray-500 ${activeColumn === 'turnovers' ? 'bg-gray-200' : ''}`}>{player.turnovers}</td>
-                                        <td className={`px-4 py-2 text-sm text-gray-500 ${activeColumn === 'fouls' ? 'bg-gray-200' : ''}`}>{player.fouls}</td>
-                                        <td className={`px-4 py-2 text-sm text-gray-500 ${activeColumn === 'pra' ? 'bg-gray-200' : ''}`}>{player.pra}</td>
+                                        <Link
+                                            to={`/player/${player.player_id}`}
+                                        >
+                                        <td className={`px-4 py-2 text-sm font-semibold hover:underline text-red-600 ${activeColumn === 'player_name' ? 'bg-gray-200' : ''}`}>{player.player_name}</td>
+                                        </Link>
+                                        <td className={`px-4 py-2 text-sm font-semibold hover:underline text-red-600 ${activeColumn === 'team_name' ? 'bg-gray-200' : ''}`}>{player.team_name}</td>
+                                        <td className={`px-4 py-2 text-sm text-black-500 ${activeColumn === 'points' ? 'bg-gray-200' : ''}`}>{player.points}</td>
+                                        <td className={`px-4 py-2 text-sm text-black-500 ${activeColumn === 'assists' ? 'bg-gray-200' : ''}`}>{player.assists}</td>
+                                        <td className={`px-4 py-2 text-sm text-black-500 ${activeColumn === 'rebounds' ? 'bg-gray-200' : ''}`}>{player.rebounds}</td>
+                                        <td className={`px-4 py-2 text-sm text-black-500 ${activeColumn === 'steals' ? 'bg-gray-200' : ''}`}>{player.steals}</td>
+                                        <td className={`px-4 py-2 text-sm text-black-500 ${activeColumn === 'blocks' ? 'bg-gray-200' : ''}`}>{player.blocks}</td>
+                                        <td className={`px-4 py-2 text-sm text-black-500 ${activeColumn === 'turnovers' ? 'bg-gray-200' : ''}`}>{player.turnovers}</td>
+                                        <td className={`px-4 py-2 text-sm text-black-500 ${activeColumn === 'fouls' ? 'bg-gray-200' : ''}`}>{player.fouls}</td>
+                                        <td className={`px-4 py-2 text-sm text-black-500 ${activeColumn === 'pra' ? 'bg-gray-200' : ''}`}>{player.pra}</td>
                                     </tr>
                                     ))}
                                     </tbody>
