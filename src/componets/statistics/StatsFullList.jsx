@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 import NavBar from '../NavBar';
 import Footer from '../Footer';
 import MatchTypeFilter from './MatchTypeFilter';
@@ -7,17 +6,19 @@ import StatScopeFilter from './StatScopeFilter';
 import { BACKEND_URL } from '../../enviroment';
 
 const StatsFullList = () => {
-    const { statType } = useParams();
     const [matchType, setMatchType] = useState('Regular');
     const [statScope, setStatScope] = useState('Per Game');
     const [stats, setStats] = useState([]);
+    const [, setSortKey] = useState(null);
+    const [sortOrder, setSortOrder] = useState('desc');
+    const [activeColumn, setActiveColumn] = useState('points');
 
     useEffect(() => {
         const fetchStats = async () => {
             try {
                 let response;
                 if (statScope === 'Per Game') {
-                    response = await fetch(`${BACKEND_URL}/.netlify/functions/getTopPlayerStats?match_type=${matchType}&stat_type=${statType}`);
+                    response = await fetch(`${BACKEND_URL}/.netlify/functions/getStatsPerGame?match_type=${matchType}`);
                 } else {
                     response = await fetch(`${BACKEND_URL}/.netlify/functions/getAllPlayersMatchesStats?match_type=${matchType}`);
                 }
@@ -65,67 +66,108 @@ const StatsFullList = () => {
                         acc[playerId].pra += item.pra;
                         return acc;
                     }, {});
-                    setStats(Object.values(playerTotals));
+                    setStats(Object.values(playerTotals).sort((a, b) => b.points - a.points));
                 } else {
                     // Si está en 'Per Game', se espera que los datos ya estén filtrados por el backend
-                    setStats(data);
+                    setStats(data.sort((a, b) => b.points - a.points));
                 }
+                setActiveColumn('points');
+                
             } catch (error) {
                 console.error('Error fetching stats:', error);
             }
         };
 
         fetchStats();
-    }, [statType, statScope, matchType]);
+    }, [statScope, matchType]);
 
+    
+
+    const handleSort = (key) => {
+        // Si se hace clic en la misma columna
+        if (activeColumn === key) {
+            // Cambiar el orden (asc <-> desc)
+            const newOrder = sortOrder === 'asc' ? 'desc' : 'asc';
+            setSortOrder(newOrder);
+    
+            const sortedStats = [...stats].sort((a, b) => {
+                return newOrder === 'asc' ? a[key] - b[key] : b[key] - a[key]; // Ordenar según el nuevo orden
+            });
+    
+            setStats(sortedStats);
+        } else {
+            // Si se hace clic en una columna diferente
+            setActiveColumn(key); // Establecer la nueva columna activa
+            setSortKey(key); // Actualizar la clave de ordenación
+            setSortOrder('desc'); // Reiniciar a desc
+    
+            const sortedStats = [...stats].sort((a, b) => {
+                return b[key] - a[key]; // Ordenar de mayor a menor
+            });
+    
+            setStats(sortedStats);
+        }
+    };
     return (
         <>
             <NavBar />
-            <div className='px-4 py-6'>
                 <div className='h-96 w-full'>
-                    <img src="images/Home-Banners/basketball-game-concept.png"
+                    <img src="/images/Home-Banners/basketball-game-concept.png"
                         alt='Stats component Image'
                         className='h-full w-full object-cover'/>
                 </div>
+            <div className='px-4 py-6'>
                 <h2 className='text-2xl font-semibold mb-4 text-gray-800 text-center'>
                     Estadísticas {statScope}
                 </h2>
-                <div className='flex justify-start mb-4'>
-                    <MatchTypeFilter setSelectedMatchType={setMatchType} />
-                    <StatScopeFilter setSelectedStatScope={setStatScope} />
+                <div className="flex mt-8 justify-center">
+                    <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                        <div className="inline-block py-2 align-middle sm:px-6 lg:px-8">
+                        <div className='flex justify-start mb-4'>
+                            <MatchTypeFilter setSelectedMatchType={setMatchType} />
+                            <StatScopeFilter setSelectedStatScope={setStatScope} />
+                        </div>
+                            <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:rounded-lg">
+                                <div className="overflow-x-auto">
+                                <table className="min-w-full table-auto mx-auto divide-y divide-gray-300">
+                                    <thead className="bg-gray-50">
+                                    <tr>
+                                        <th scope="col" className="px-4 py-2 text-left text-sm font-semibold text-gray-900"></th>
+                                        <th scope="col" className={`px-4 py-2 text-left text-sm font-semibold text-gray-900`}>Jugador</th>
+                                        <th scope="col" className={`px-4 py-2 text-left text-sm font-semibold text-gray-900`}>Equipo</th>
+                                        <th scope="col" className={`px-4 py-2 text-left text-sm font-semibold text-gray-900 hover:cursor-pointer ${activeColumn === 'points' ? 'bg-gray-200' : ''}`} onClick={() => handleSort('points')}>PTS</th>
+                                        <th scope="col" className={`px-4 py-2 text-left text-sm font-semibold text-gray-900 hover:cursor-pointer ${activeColumn === 'assists' ? 'bg-gray-200' : ''}`} onClick={() => handleSort('assists')}>AST</th>
+                                        <th scope="col" className={`px-4 py-2 text-left text-sm font-semibold text-gray-900 hover:cursor-pointer ${activeColumn === 'rebounds' ? 'bg-gray-200' : ''}`} onClick={() => handleSort('rebounds')}>REB</th>
+                                        <th scope="col" className={`px-4 py-2 text-left text-sm font-semibold text-gray-900 hover:cursor-pointer ${activeColumn === 'steals' ? 'bg-gray-200' : ''}`} onClick={() => handleSort('steals')}>STL</th>
+                                        <th scope="col" className={`px-4 py-2 text-left text-sm font-semibold text-gray-900 hover:cursor-pointer ${activeColumn === 'blocks' ? 'bg-gray-200' : ''}`} onClick={() => handleSort('blocks')}>BLK</th>
+                                        <th scope="col" className={`px-4 py-2 text-left text-sm font-semibold text-gray-900 hover:cursor-pointer ${activeColumn === 'turnovers' ? 'bg-gray-200' : ''}`} onClick={() => handleSort('turnovers')}>TO</th>
+                                        <th scope="col" className={`px-4 py-2 text-left text-sm font-semibold text-gray-900 hover:cursor-pointer ${activeColumn === 'fouls' ? 'bg-gray-200' : ''}`} onClick={() => handleSort('fouls')}>PF</th>
+                                        <th scope="col" className={`px-4 py-2 text-left text-sm font-semibold text-gray-900 hover:cursor-pointer ${activeColumn === 'pra' ? 'bg-gray-200' : ''}`} onClick={() => handleSort('pra')}>PRA</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody className="divide-y divide-gray-200 bg-white">
+                                    {stats.map((player, index) => (
+                                        <tr key={index}>
+                                        <td className="px-4 py-2 text-sm text-gray-500">{index + 1}</td>
+                                        <td className={`px-4 py-2 text-sm text-gray-500 ${activeColumn === 'player_name' ? 'bg-gray-200' : ''}`}>{player.player_name}</td>
+                                        <td className={`px-4 py-2 text-sm text-gray-500 ${activeColumn === 'team_name' ? 'bg-gray-200' : ''}`}>{player.team_name}</td>
+                                        <td className={`px-4 py-2 text-sm text-gray-500 ${activeColumn === 'points' ? 'bg-gray-200' : ''}`}>{player.points}</td>
+                                        <td className={`px-4 py-2 text-sm text-gray-500 ${activeColumn === 'assists' ? 'bg-gray-200' : ''}`}>{player.assists}</td>
+                                        <td className={`px-4 py-2 text-sm text-gray-500 ${activeColumn === 'rebounds' ? 'bg-gray-200' : ''}`}>{player.rebounds}</td>
+                                        <td className={`px-4 py-2 text-sm text-gray-500 ${activeColumn === 'steals' ? 'bg-gray-200' : ''}`}>{player.steals}</td>
+                                        <td className={`px-4 py-2 text-sm text-gray-500 ${activeColumn === 'blocks' ? 'bg-gray-200' : ''}`}>{player.blocks}</td>
+                                        <td className={`px-4 py-2 text-sm text-gray-500 ${activeColumn === 'turnovers' ? 'bg-gray-200' : ''}`}>{player.turnovers}</td>
+                                        <td className={`px-4 py-2 text-sm text-gray-500 ${activeColumn === 'fouls' ? 'bg-gray-200' : ''}`}>{player.fouls}</td>
+                                        <td className={`px-4 py-2 text-sm text-gray-500 ${activeColumn === 'pra' ? 'bg-gray-200' : ''}`}>{player.pra}</td>
+                                    </tr>
+                                    ))}
+                                    </tbody>
+                                </table>    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <table className="table-auto w-full border-collapse border border-gray-300">
-                    <thead>
-                        <tr>
-                            <th className="border border-gray-300 px-4 py-2">Jugador</th>
-                            <th className="border border-gray-300 px-4 py-2">Equipo</th>
-                            <th className="border border-gray-300 px-4 py-2">PTS</th>
-                            <th className="border border-gray-300 px-4 py-2">AST</th>
-                            <th className="border border-gray-300 px-4 py-2">REB</th>
-                            <th className="border border-gray-300 px-4 py-2">STL</th>
-                            <th className="border border-gray-300 px-4 py-2">BLK</th>
-                            <th className="border border-gray-300 px-4 py-2">TO</th>
-                            <th className="border border-gray-300 px-4 py-2">PF</th>
-                            <th className="border border-gray-300 px-4 py-2">PRA</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {stats.map((player, index) => (
-                            <tr key={index}>
-                                <td className="border border-gray-300 px-4 py-2">{player.player_name}</td>
-                                <td className="border border-gray-300 px-4 py-2">{player.team_name}</td>
-                                <td className="border border-gray-300 px-4 py-2">{player.points_per_game || player.points}</td>
-                                <td className="border border-gray-300 px-4 py-2">{player.assists_per_game || player.assists}</td>
-                                <td className="border border-gray-300 px-4 py-2">{player.rebounds_per_game || player.rebounds}</td>
-                                <td className="border border-gray-300 px-4 py-2">{player.steals_per_game || player.steals}</td>
-                                <td className="border border-gray-300 px-4 py-2">{player.blocks_per_game || player.blocks}</td>
-                                <td className="border border-gray-300 px-4 py-2">{player.turnovers_per_game || player.turnovers}</td>
-                                <td className="border border-gray-300 px-4 py-2">{player.fouls_per_game || player.fouls}</td>
-                                <td className="border border-gray-300 px-4 py-2">{player.pra_per_game || player.pra}</td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
             </div>
             <Footer />
         </>

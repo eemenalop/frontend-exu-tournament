@@ -54,7 +54,7 @@ function App() {
 
         <Route path="/GeneralStats" element={<GeneralStats />} />
 
-        <Route path="/GeneralStats/full-list/:initialStatType/:initialStatScope" element={<StatsFullList />} />
+        <Route path="/GeneralStats/full-list/" element={<StatsFullList />} />
 
         <Route path="/Matches" element={<Matches />} />
 
