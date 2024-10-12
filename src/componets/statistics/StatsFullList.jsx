@@ -133,9 +133,9 @@ const StatsFullList = () => {
                                 <table className="min-w-full table-auto mx-auto divide-y divide-gray-300">
                                     <thead className="bg-gray-50">
                                     <tr>
-                                        <th scope="col" className="px-4 py-2 text-left text-sm font-semibold text-gray-900"></th>
-                                        <th scope="col" className={`px-4 py-2 text-left text-sm font-semibold text-gray-900`}>Jugador</th>
-                                        <th scope="col" className={`px-4 py-2 text-left text-sm font-semibold text-gray-900`}>Equipo</th>
+                                        <th scope="col" className="sticky left-0 z-10 px-4 py-2 text-left text-sm font-semibold text-gray-900"></th>
+                                        <th scope="col" className={`sticky left-0 z-10 px-4 py-2 text-left text-sm font-semibold text-gray-900`}>Jugador</th>
+                                        <th scope="col" className={`sticky left-0 z-10 px-4 py-2 text-left text-sm font-semibold text-gray-900`}>Equipo</th>
                                         <th scope="col" className={`px-4 py-2 text-left text-sm font-semibold text-gray-900 hover:cursor-pointer ${activeColumn === 'points' ? 'bg-gray-200' : ''}`} onClick={() => handleSort('points')}>PTS</th>
                                         <th scope="col" className={`px-4 py-2 text-left text-sm font-semibold text-gray-900 hover:cursor-pointer ${activeColumn === 'assists' ? 'bg-gray-200' : ''}`} onClick={() => handleSort('assists')}>AST</th>
                                         <th scope="col" className={`px-4 py-2 text-left text-sm font-semibold text-gray-900 hover:cursor-pointer ${activeColumn === 'rebounds' ? 'bg-gray-200' : ''}`} onClick={() => handleSort('rebounds')}>REB</th>
@@ -149,13 +149,11 @@ const StatsFullList = () => {
                                     <tbody className="divide-y divide-gray-200 bg-white">
                                     {stats.map((player, index) => (
                                         <tr key={index}>
-                                        <td className="px-4 py-2 text-sm text-gray-500">{index + 1}</td>
-                                        <Link
-                                            to={`/player/${player.player_id}`}
-                                        >
-                                        <td className={`px-4 py-2 text-sm font-semibold hover:underline text-red-600 ${activeColumn === 'player_name' ? 'bg-gray-200' : ''}`}>{player.player_name}</td>
-                                        </Link>
-                                        <td className={`px-4 py-2 text-sm font-semibold hover:underline text-red-600 ${activeColumn === 'team_name' ? 'bg-gray-200' : ''}`}>{player.team_name}</td>
+                                        <td className="sticky left-0 z-10 px-4 py-2 text-sm text-gray-500">{index + 1}</td>
+                                        <td className={`sticky left-0 z-10 px-4 py-2 text-sm font-semibold hover:underline text-red-600 ${activeColumn === 'player_name' ? 'bg-gray-200' : ''}`}>
+                                        <Link to={`/player/${player.player_id}`}>{player.player_name}</Link>
+                                        </td>
+                                        <td className={`sticky left-0 z-10 px-4 py-2 text-sm font-semibold hover:underline text-red-600 ${activeColumn === 'team_name' ? 'bg-gray-200' : ''}`}>{player.team_name}</td>
                                         <td className={`px-4 py-2 text-sm text-black-500 ${activeColumn === 'points' ? 'bg-gray-200' : ''}`}>{player.points}</td>
                                         <td className={`px-4 py-2 text-sm text-black-500 ${activeColumn === 'assists' ? 'bg-gray-200' : ''}`}>{player.assists}</td>
                                         <td className={`px-4 py-2 text-sm text-black-500 ${activeColumn === 'rebounds' ? 'bg-gray-200' : ''}`}>{player.rebounds}</td>
