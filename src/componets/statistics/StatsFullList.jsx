@@ -5,6 +5,7 @@ import MatchTypeFilter from './MatchTypeFilter';
 import StatScopeFilter from './StatScopeFilter';
 import { BACKEND_URL } from '../../enviroment';
 import { Link } from 'react-router-dom';
+import { useLocation } from "react-router-dom"
 
 const StatsFullList = () => {
     const [matchType, setMatchType] = useState('Regular');
@@ -13,6 +14,14 @@ const StatsFullList = () => {
     const [, setSortKey] = useState(null);
     const [sortOrder, setSortOrder] = useState('desc');
     const [activeColumn, setActiveColumn] = useState('points');
+    const location = useLocation();
+
+    useEffect(() => {
+        window.scrollTo({
+            top:0,
+            behavior: 'smooth'
+        });
+      }, [location.key]);
 
     useEffect(() => {
         const fetchStats = async () => {
