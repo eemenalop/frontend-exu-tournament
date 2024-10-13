@@ -79,7 +79,19 @@ const StatsFullList = () => {
                     setStats(Object.values(playerTotals).sort((a, b) => b.points - a.points));
                 } else {
                     // Si está en 'Per Game', se espera que los datos ya estén filtrados por el backend
-                    setStats(data.sort((a, b) => b.points - a.points));
+
+                    const formattedData = data.map(item => ({
+                        ...item,
+                        points: item.points.toFixed(1),
+                        assists: item.assists.toFixed(1),
+                        rebounds: item.rebounds.toFixed(1),
+                        steals: item.steals.toFixed(1),
+                        blocks: item.blocks.toFixed(1),
+                        turnovers: item.turnovers.toFixed(1),
+                        fouls: item.fouls.toFixed(1),
+                        pra: item.pra.toFixed(1)
+                    }));
+                    setStats(formattedData.sort((a, b) => b.points - a.points));
                 }
                 setActiveColumn('points');
                 
@@ -133,7 +145,7 @@ const StatsFullList = () => {
                 <div className="flex mt-8 justify-center">
                     <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                         <div className="inline-block py-2 align-middle sm:px-6 lg:px-8">
-                        <div className='flex justify-start mb-4'>
+                        <div className='flex justify-start mb-10'>
                             <MatchTypeFilter setSelectedMatchType={setMatchType} />
                             <StatScopeFilter setSelectedStatScope={setStatScope} />
                         </div>
