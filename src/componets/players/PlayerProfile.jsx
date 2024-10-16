@@ -89,7 +89,7 @@ export const PlayerProfile = ({playerId }) => {
                         <div className="text-xl font-bold">{roundValue(playerInfo.assists)}</div>
                     </div>
                     <div className="bg-red-800 text-white p-4 rounded-lg text-center">
-                        <div className="text-sm">PRA</div>
+                        <div className="text-sm">PRA por juego</div>
                         <div className="text-xl font-bold">{roundValue(playerInfo.pra)}</div>
                     </div>
                 </div>
