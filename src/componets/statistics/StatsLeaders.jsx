@@ -9,7 +9,7 @@ const StatsLeaders = ({ matchType, statType, statScope }) => {
     const navigate = useNavigate();
 
     const handleFullListClick = () => {
-        navigate(`/GeneralStats/full-list/${statType}/${statScope}`)
+        navigate(`/GeneralStats/full-list/`)
     }
 
     useEffect(() => {

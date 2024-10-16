@@ -59,10 +59,20 @@ function Standing() {
             standingsMap[team1_id].JP += 1;
             standingsMap[team1_id].puntos += 1; // Perder 1 punto
           }
+
+          
         });
         
-        const sortedStandings = Object.values(standingsMap).sort((a, b) => b.puntos - a.puntos);
+        const sortedStandings = Object.values(standingsMap).sort((a, b) => {
+          if (b.puntos === a.puntos) {
+            return b['+/-'] - a['+/-']; // Desempatar por el +/- si los puntos son iguales
+          }
+          return b.puntos - a.puntos; // Ordenar principalmente por puntos
+        });
+        
         setStandings(sortedStandings);
+
+        console.log(sortedStandings)
       } catch (error) {
         console.error('Error fetching data:', error);
       }

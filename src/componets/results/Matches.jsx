@@ -40,12 +40,12 @@ const Matches = () => {
   return (
     <>
     <NavBar />
+        
         <div className='flex justify-left my-11 mx-4'>
           <MatchTypeFilter
             setSelectedMatchType={setMatchType}
             />
         </div>
-        
         <div className="container mx-auto my-8 px-4 flex flex-wrap justify-center gap-4">
                     {matches.map((match) => (
               <div key={match.match_id} className="bg-white shadow-md rounded-lg p-6 w-full sm:w-1/2 lg:w-1/3">

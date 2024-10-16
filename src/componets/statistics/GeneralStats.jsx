@@ -19,6 +19,8 @@ const GeneralStats = () => {
                     className='h-full w-full object-cover'/>
                 </div>
             <div className='px-4 py-6'>
+                
+                <div className='max-w-6xl mx-auto'>
                 <h2 className='text-2xl font-semibold mb-4 text-gray-800'>
                     Lideres de estadisticas
                 </h2>
@@ -26,8 +28,6 @@ const GeneralStats = () => {
                     <MatchTypeFilter setSelectedMatchType={setMatchType}/>
                     <StatScopeFilter setSelectedStatScope={setStatScope} />
                 </div>
-                
-                <div className='max-w-6xl mx-auto'>
                     <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4'>
                         <StatsLeaders matchType={matchType} statScope={statScope} statType='points' />
                         <StatsLeaders matchType={matchType} statScope={statScope} statType="assists" />
