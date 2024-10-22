@@ -43,14 +43,13 @@
             ) 
         }
       
-        const calculateStat = (statPerGame) => {
-          if (statScope === "Totals" && playerStats[0].games_played) {
-              return statPerGame * playerStats[0].games_played;
+        const calculateStat = (statPerGame, games_played) => {
+          if (statScope === "Totals" && games_played) {
+            return statPerGame * games_played;
           }
           return statPerGame;
         }
-    
-
+  
       const roundValue = (value, isTotal = false, isPercentage = false) => {
           if (value === null || value === undefined) {
               return 'N/A';
@@ -141,13 +140,13 @@
                             </Link>
                           </td>
                           <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{player.games_played}</td>
-                          <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(calculateStat(player.points), statScope === 'Totals')}</td>
-                          <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(calculateStat(player.rebounds), statScope === 'Totals')}</td>
-                          <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(calculateStat(player.assists), statScope === 'Totals')}</td>
-                          <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(calculateStat(player.steals), statScope === 'Totals')}</td>
-                          <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(calculateStat(player.blocks), statScope === 'Totals')}</td>
-                          <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(calculateStat(player.turnovers), statScope === 'Totals')}</td>
-                          <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(calculateStat(player.fouls), statScope === 'Totals')}</td>
+                          <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(calculateStat(player.points, player.games_played), statScope === 'Totals')}</td>
+                          <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(calculateStat(player.rebounds, player.games_played), statScope === 'Totals')}</td>
+                          <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(calculateStat(player.assists, player.games_played), statScope === 'Totals')}</td>
+                          <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(calculateStat(player.steals, player.games_played), statScope === 'Totals')}</td>
+                          <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(calculateStat(player.blocks, player.games_played), statScope === 'Totals')}</td>
+                          <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(calculateStat(player.turnovers, player.games_played), statScope === 'Totals')}</td>
+                          <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(calculateStat(player.fouls, player.games_played), statScope === 'Totals')}</td>
                           {/*<td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(player.fgm)}</td>
                           <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(player.fga)}</td>
                           <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(player.fg_percentage)}</td>
@@ -157,7 +156,7 @@
                           <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(player.ftm)}</td>
                           <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(player.fta)}</td>
                           <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(player.ft_percentage)}</td>*/}
-                          <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(calculateStat(player.pra), statScope === 'Totals')}</td>
+                          <td className="whitespace-nowrap px-3 py-4 text-sm text-black">{roundValue(calculateStat(player.pra, player.games_played), statScope === 'Totals')}</td>
                         </tr>
                       ))}
                     </tbody>
