@@ -22,10 +22,10 @@ const AddMatchModal = ({ match = null, onClose }) => {
     team1_q3: match?.team1_q3 || 0,
     team2_q3: match?.team2_q3 || 0,
     team1_q4: match?.team1_q4 || 0,
-    team2_q4: match?.team2_q4 || 0
-    /*team1_ot1: match?.team1_ot1 || "",
-    team2_ot1: match?.team2_ot1 || "",
-    team1_ot2: match?.team1_ot2 || "",
+    team2_q4: match?.team2_q4 || 0,
+    team1_ot1: match?.team1_ot1 || 0,
+    team2_ot1: match?.team2_ot1 || 0,
+    /*team1_ot2: match?.team1_ot2 || "",
     team2_ot2: match?.team2_ot2 || "",*/
   });
 
@@ -314,7 +314,7 @@ const AddMatchModal = ({ match = null, onClose }) => {
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             />
           </div>
-          {/*<div className="mb-4">
+          <div className="mb-4">
             <label htmlFor="team1_ot1" className="block text-sm font-medium text-gray-700">
               Equipo 1 OT1
             </label>
@@ -339,7 +339,7 @@ const AddMatchModal = ({ match = null, onClose }) => {
               onChange={handleInputChange}
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             />
-          </div>*/}
+          </div>
           <div className="mb-4">
             <label htmlFor="match_date_time" className="block text-sm font-medium text-gray-700">
               Fecha y Hora del Partido

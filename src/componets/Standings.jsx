@@ -19,7 +19,6 @@ function Standing() {
 
         const completedMatches = matches.filter(match => match.state === "completo");
 
-       
         const teamsResponse = await fetch(`${BACKEND_URL}/.netlify/functions/getAllMatches`);
         const teams = await teamsResponse.json();
 
@@ -36,10 +35,10 @@ function Standing() {
           const team2_name = teamNameMap[team2_id];
 
           if (!standingsMap[team1_id]) {
-            standingsMap[team1_id] = { equipo: team1_id, name: team1_name, JJ: 0, JG: 0, JP: 0, '+/-': 0, puntos: 0 };
+            standingsMap[team1_id] = { equipo: team1_id, name: team1_name, JJ: 0, JG: 0, JP: 0, '+/-': 0, puntos: 0, directWins: {} };
           }
           if (!standingsMap[team2_id]) {
-            standingsMap[team2_id] = { equipo: team2_id, name: team2_name, JJ: 0, JG: 0, JP: 0, '+/-': 0, puntos: 0 };
+            standingsMap[team2_id] = { equipo: team2_id, name: team2_name, JJ: 0, JG: 0, JP: 0, '+/-': 0, puntos: 0, directWins: {} };
           }
 
           standingsMap[team1_id].JJ += 1;
@@ -50,33 +49,37 @@ function Standing() {
 
           if (score_team1 > score_team2) {
             standingsMap[team1_id].JG += 1;
-            standingsMap[team1_id].puntos += 2; // Ganar 2 puntos
+            standingsMap[team1_id].puntos += 2;
             standingsMap[team2_id].JP += 1;
-            standingsMap[team2_id].puntos += 1; // Perder 1 punto
+            standingsMap[team2_id].puntos += 1;
+
+            standingsMap[team1_id].directWins[team2_id] = (standingsMap[team1_id].directWins[team2_id] || 0) + 1;
           } else if (score_team2 > score_team1) {
             standingsMap[team2_id].JG += 1;
-            standingsMap[team2_id].puntos += 2; // Ganar 2 puntos
+            standingsMap[team2_id].puntos += 2;
             standingsMap[team1_id].JP += 1;
-            standingsMap[team1_id].puntos += 1; // Perder 1 punto
-          }
+            standingsMap[team1_id].puntos += 1;
 
-          
+            standingsMap[team2_id].directWins[team1_id] = (standingsMap[team2_id].directWins[team1_id] || 0) + 1;
+          }
         });
-        
+
         const sortedStandings = Object.values(standingsMap).sort((a, b) => {
-          if (b.puntos === a.puntos) {
-            return b['+/-'] - a['+/-']; // Desempatar por el +/- si los puntos son iguales
-          }
-          return b.puntos - a.puntos; // Ordenar principalmente por puntos
-        });
-        
-        setStandings(sortedStandings);
+          if (b.puntos !== a.puntos) return b.puntos - a.puntos;
+          if (b.JG !== a.JG) return b.JG - a.JG;
 
-        console.log(sortedStandings)
+          const directWinsA = a.directWins[b.equipo] || 0;
+          const directWinsB = b.directWins[a.equipo] || 0;
+
+          if (directWinsA !== directWinsB) return directWinsB - directWinsA;
+
+          return b['+/-'] - a['+/-'];
+        });
+
+        setStandings(sortedStandings);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
-      
     };
 
     fetchData();
@@ -89,7 +92,7 @@ function Standing() {
   return (
     <div className="flex justify-center items-center mt-10">
       <div className="overflow-x-auto w-full max-w-md mx-auto">
-      <h2 className="text-2xl font-bold mb-6 text-gray-800 text-center">Standings</h2>
+        <h2 className="text-2xl font-bold mb-6 text-gray-800 text-center">Standings</h2>
         <table className="min-w-full bg-white border border-gray-200">
           <thead>
             <tr>
