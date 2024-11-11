@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import { useLocation } from "react-router-dom"
 
 const StatsFullList = () => {
-    const [matchType, setMatchType] = useState('Regular');
+    const [matchType, setMatchType] = useState('Semifinal');
     const [statScope, setStatScope] = useState('Per Game');
     const [stats, setStats] = useState([]);
     const [, setSortKey] = useState(null);

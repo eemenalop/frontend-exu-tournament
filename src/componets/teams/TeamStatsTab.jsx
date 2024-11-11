@@ -9,7 +9,7 @@
     export default function TeamStatsTab({teamId}) {
         const [playerStats, setPlayerStats] = useState([]);
         const [loading, setLoading] = useState(true);
-        const [matchType, setMatchType] = useState('Regular');
+        const [matchType, setMatchType] = useState('Semifinal');
         const [statScope, setStatScope] = useState('Per Game');
 
         useEffect(() =>{

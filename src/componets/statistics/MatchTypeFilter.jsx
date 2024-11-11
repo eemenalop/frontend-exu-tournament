@@ -4,9 +4,9 @@ import { Listbox, ListboxButton, ListboxOption, ListboxOptions } from '@headless
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
 
 const matchesTypes = [
+    { id: 2, matchType: 'Semifinal' },
     { id: 1, matchType: 'Regular' },
-    /*{ id: 2, matchType: 'Semifinal' },
-    { id: 3, matchType: 'Final' }*/
+    /*{ id: 3, matchType: 'Final' }*/
 ]
 
 export default function MatchTypeFilter({setSelectedMatchType }) {
