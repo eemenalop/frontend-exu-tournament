@@ -8,7 +8,7 @@ import MatchTypeFilter from "../statistics/MatchTypeFilter";
 const Matches = () => {
     const [matches, setMatches] = useState([]);
     const navigate = useNavigate();
-    const [matchType, setMatchType] = useState('Semifinal');
+    const [matchType, setMatchType] = useState('Final');
     
     const handleBoxScoreClick = (matchId) => {
         navigate(`/match/${matchId}/MatchesBoxScore`);

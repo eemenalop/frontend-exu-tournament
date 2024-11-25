@@ -7,7 +7,7 @@ import StatScopeFilter from './StatScopeFilter';
 
 const GeneralStats = () => {
 
-    const [matchType, setMatchType] = useState('Semifinal');
+    const [matchType, setMatchType] = useState('Final');
     const [statScope, setStatScope] = useState('Per Game');
 
     return (

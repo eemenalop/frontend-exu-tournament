@@ -7,7 +7,7 @@ import StatScopeFilter from "../statistics/StatScopeFilter";
 // eslint-disable-next-line react/prop-types
 export const PlayerProfile = ({playerId }) => {
     const [playerInfo, setPlayerInfo] = useState({});
-    const [matchType, setMatchType] = useState('Semifinal');
+    const [matchType, setMatchType] = useState('Final');
     const [statScope, setStatScope] = useState('Per Game');
 
     useEffect(()=>{
